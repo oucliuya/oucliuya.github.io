@@ -1,49 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-05-29T11:05:05+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">MySQL的binlog</title><link href="http://localhost:4000/document/2019/05/29/Bin-log.html" rel="alternate" type="text/html" title="MySQL的binlog" /><published>2019-05-29T10:08:00+08:00</published><updated>2019-05-29T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/05/29/Bin-log</id><content type="html" xml:base="http://localhost:4000/document/2019/05/29/Bin-log.html">&lt;h2 id=&quot;格式&quot;&gt;格式&lt;/h2&gt;
-&lt;p&gt;ROW&lt;/p&gt;
-
-&lt;p&gt;STATEMENT&lt;/p&gt;
-
-&lt;p&gt;MIXED&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;切换格式：&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;my.cnf文件中
-binlog_format   = MIXED                 //binlog日志格式
-log_bin         =目录/mysql-bin.log      //binlog日志名
-expire_logs_days    = 7                 //binlog过期清理时间
-max_binlog_size    100m                 //binlog每个日志文件大小
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;常用操作&quot;&gt;常用操作&lt;/h2&gt;
-
-&lt;p&gt;1.查看所有binlog日志列表&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql&amp;gt; show master logs;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;2.查看master状态，即最后(最新)一个binlog日志的编号名称，及其最后一个操作事件pos结束点(Position)值&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql&amp;gt; show master status;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;3.刷新log日志，自此刻开始产生一个新编号的binlog日志文件&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql&amp;gt; flush logs;
-注：每当mysqld服务重启时，会自动执行此命令，刷新binlog日志；
-在mysqldump备份数据时加 -F 选项也会刷新binlog日志；
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;4.重置(清空)所有binlog日志&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql&amp;gt; reset master;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;5 基于时间查看binlog&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysqlbinlog --start-datetime='2013-09-10 00:00:00' --stop-datetime='2013-09-10 01:01:01' -d 库名 二进制文件
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;6 基于pos查看binlog&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysqlbinlog --start-postion=107 --stop-position=1000 -d 库名 二进制文件
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;7 转换为可读文本&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysqlbinlog –base64-output=DECODE-ROWS -v -d 库名 二进制文件 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="教程" /><summary type="html">格式 ROW</summary></entry><entry><title type="html">控制台管理mysql</title><link href="http://localhost:4000/document/2019/05/29/hello-Jekyll.html" rel="alternate" type="text/html" title="控制台管理mysql" /><published>2019-05-29T10:08:00+08:00</published><updated>2019-05-29T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/05/29/hello-Jekyll</id><content type="html" xml:base="http://localhost:4000/document/2019/05/29/hello-Jekyll.html">&lt;h2 id=&quot;rds&quot;&gt;rds&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-05-29T13:22:00+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">控制台管理mysql</title><link href="http://localhost:4000/document/2019/05/29/hello-Jekyll.html" rel="alternate" type="text/html" title="控制台管理mysql" /><published>2019-05-29T10:08:00+08:00</published><updated>2019-05-29T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/05/29/hello-Jekyll</id><content type="html" xml:base="http://localhost:4000/document/2019/05/29/hello-Jekyll.html">&lt;h2 id=&quot;rds&quot;&gt;rds&lt;/h2&gt;
 &lt;p&gt;1、 rds上用root登录&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql.local
@@ -116,7 +71,352 @@ flush privileges;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql [database name] &amp;lt; [backup file name]
 //或者进入mysql命令行，然后
 source [backup file name]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="教程" /><summary type="html">rds 1、 rds上用root登录</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2019/05/29/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2019-05-29T09:45:54+08:00</published><updated>2019-05-29T09:45:54+08:00</updated><id>http://localhost:4000/jekyll/update/2019/05/29/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2019/05/29/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="教程" /><summary type="html">rds 1、 rds上用root登录</summary></entry><entry><title type="html">MySQL的存储引擎</title><link href="http://localhost:4000/document/2019/05/29/MySQL-engine.html" rel="alternate" type="text/html" title="MySQL的存储引擎" /><published>2019-05-29T10:08:00+08:00</published><updated>2019-05-29T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/05/29/MySQL-engine</id><content type="html" xml:base="http://localhost:4000/document/2019/05/29/MySQL-engine.html">&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/wjtlht928/article/details/46641865&quot;&gt;参考&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;操作&quot;&gt;操作&lt;/h2&gt;
+&lt;h3 id=&quot;展示存储引擎&quot;&gt;展示存储引擎&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;show engines&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;show variables like '%storage_engine%'&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;show create table t1&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;建表指定存储引擎&quot;&gt;建表指定存储引擎&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CREATE TABLE t (i INT) ENGINE = INNODB&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;转换存储引擎&quot;&gt;转换存储引擎&lt;/h3&gt;
+
+&lt;h2 id=&quot;对比&quot;&gt;对比&lt;/h2&gt;
+&lt;h3 id=&quot;innodb&quot;&gt;Innodb&lt;/h3&gt;
+&lt;p&gt;支持事务安全的引擎，支持外键、行锁、事务是它的最大特点。如果有大量的update和insert，建议使用InnoDB，特别是针对多个并发和QPS较高的情况。&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;count()慢，因为innodb未存储表的总行数。得执行统计，占用大量资源。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;myisam&quot;&gt;Myisam&lt;/h3&gt;
+&lt;p&gt;基于传统的ISAM类型，ISAM是Indexed Sequential Access Method (有索引的顺序访问方法) 的缩写. Myisam不是事务安全，不支持外键。 适合用于执行大量的select和insert的场景&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;count() 快，因为myisam存储了表的总行数&lt;/li&gt;
+&lt;/ol&gt;</content><author><name></name></author><category term="总结" /><summary type="html">参考 操作 展示存储引擎 show engines show variables like '%storage_engine%' show create table t1</summary></entry><entry><title type="html">MySQL的binlog</title><link href="http://localhost:4000/document/2019/05/29/Bin-log.html" rel="alternate" type="text/html" title="MySQL的binlog" /><published>2019-05-29T10:08:00+08:00</published><updated>2019-05-29T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/05/29/Bin-log</id><content type="html" xml:base="http://localhost:4000/document/2019/05/29/Bin-log.html">&lt;h2 id=&quot;格式&quot;&gt;格式&lt;/h2&gt;
+&lt;p&gt;ROW&lt;/p&gt;
+
+&lt;p&gt;STATEMENT&lt;/p&gt;
+
+&lt;p&gt;MIXED&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;切换格式：&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;my.cnf文件中
+binlog_format   = MIXED                 //binlog日志格式
+log_bin         =目录/mysql-bin.log      //binlog日志名
+expire_logs_days    = 7                 //binlog过期清理时间
+max_binlog_size    100m                 //binlog每个日志文件大小
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;常用操作&quot;&gt;常用操作&lt;/h2&gt;
+
+&lt;p&gt;1.查看所有binlog日志列表&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql&amp;gt; show master logs;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;2.查看master状态，即最后(最新)一个binlog日志的编号名称，及其最后一个操作事件pos结束点(Position)值&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql&amp;gt; show master status;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;3.刷新log日志，自此刻开始产生一个新编号的binlog日志文件&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql&amp;gt; flush logs;
+注：每当mysqld服务重启时，会自动执行此命令，刷新binlog日志；
+在mysqldump备份数据时加 -F 选项也会刷新binlog日志；
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;4.重置(清空)所有binlog日志&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql&amp;gt; reset master;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;5 基于时间查看binlog&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysqlbinlog --start-datetime='2013-09-10 00:00:00' --stop-datetime='2013-09-10 01:01:01' -d 库名 二进制文件
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;6 基于pos查看binlog&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysqlbinlog --start-postion=107 --stop-position=1000 -d 库名 二进制文件
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;7 转换为可读文本&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysqlbinlog –base64-output=DECODE-ROWS -v -d 库名 二进制文件 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="教程" /><summary type="html">格式 ROW</summary></entry><entry><title type="html">MySQL的字符集</title><link href="http://localhost:4000/document/2019/05/29/MySQL-charset.html" rel="alternate" type="text/html" title="MySQL的字符集" /><published>2019-05-29T10:08:00+08:00</published><updated>2019-05-29T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/05/29/MySQL-charset</id><content type="html" xml:base="http://localhost:4000/document/2019/05/29/MySQL-charset.html">&lt;h2 id=&quot;1-utf8字符集问题&quot;&gt;1 utf8字符集问题&lt;/h2&gt;
+&lt;h3 id=&quot;11-简介&quot;&gt;1.1 简介&lt;/h3&gt;
+&lt;p&gt;mysql 5.5.3增加了utf8mb4（utf8 more byte 4），专门用来支持四字节的unicode（utf8字符集每个字符最多使用三个字节）。 utf8mb4 编码是 utf8编码的超集，所以把utf8改成utf8mb4不需要做其他转换。&lt;/p&gt;
+
+&lt;p&gt;开发时，为了获取更好的兼容性，应该总是使用 utf8mb4 而非 utf8.  对于 CHAR 类型数据，utf8mb4 会多消耗一些空间，根据 Mysql 官方建议，使用 VARCHAR  替代 CHAR。&lt;/p&gt;
+
+&lt;h3 id=&quot;12-修改mysql的编码为utf8mb4&quot;&gt;1.2 修改MySQL的编码为utf8mb4&lt;/h3&gt;
+&lt;h4 id=&quot;121-mysql版本为-553&quot;&gt;1.2.1 MySQL版本为 5.5.3+&lt;/h4&gt;
+
+&lt;h4 id=&quot;122-mysql驱动-5113&quot;&gt;1.2.2 MySQL驱动 5.1.13+&lt;/h4&gt;
+
+&lt;h4 id=&quot;123-修改mysql配置文件mycnf&quot;&gt;1.2.3 修改MySQL配置文件my.cnf&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;修改mysql配置文件my.cnf（windows为my.ini）
+my.cnf一般在etc/mysql/my.cnf位置。找到后请在以下三部分里添加如下内容：
+[client]
+default-character-set = utf8mb4
+[mysql]
+default-character-set = utf8mb4
+[mysqld]
+character-set-client-handshake = FALSE
+character-set-server = utf8mb4
+collation-server = utf8mb4_unicode_ci
+init_connect=’SET NAMES utf8mb4’
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id=&quot;124-重启数据库检查变量&quot;&gt;1.2.4 重启数据库，检查变量&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SHOW VARIABLES WHERE Variable_name LIKE 'character\_set\_%' OR Variable_name LIKE 'collation%';
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;要保证以下5个变量为utf8mb4：
+&lt;img src=&quot;media/15571962426038/15571964982291.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;附：各种与字符集相关的变量&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Variable_name&lt;/th&gt;
+      &lt;th&gt;Value&lt;/th&gt;
+      &lt;th&gt;define&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;character_set_client&lt;/td&gt;
+      &lt;td&gt;utf8mb4&lt;/td&gt;
+      &lt;td&gt;客户端来源数据使用的字符集，也就是客户端发过来的查询语句使用的什么字符集&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;character_set_connection&lt;/td&gt;
+      &lt;td&gt;utf8mb4&lt;/td&gt;
+      &lt;td&gt;MySQL接受到用户查询后，按照character_set_client将其转化为character_set_connection设定的字符集。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;character_set_database&lt;/td&gt;
+      &lt;td&gt;utf8&lt;/td&gt;
+      &lt;td&gt;当前选中数据库的默认字符集&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;character_set_filesystem&lt;/td&gt;
+      &lt;td&gt;binary&lt;/td&gt;
+      &lt;td&gt;进行文件读写时转换文件名， 默认binary为不转换&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;character_set_results&lt;/td&gt;
+      &lt;td&gt;utf8mb4&lt;/td&gt;
+      &lt;td&gt;查询结果编码的字符集&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;character_set_server&lt;/td&gt;
+      &lt;td&gt;utf8mb4&lt;/td&gt;
+      &lt;td&gt;默认的内部操作字符集&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;character_set_system&lt;/td&gt;
+      &lt;td&gt;utf8&lt;/td&gt;
+      &lt;td&gt;元数据的字符集，如库表名、用户名等&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;collation_connection&lt;/td&gt;
+      &lt;td&gt;utf8mb4_unicode_ci&lt;/td&gt;
+      &lt;td&gt;执行字符比较时采用的编码规则&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;collation_database&lt;/td&gt;
+      &lt;td&gt;utf8_general_ci&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;collation_server&lt;/td&gt;
+      &lt;td&gt;utf8mb4_unicode_ci&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&quot;125-数据库连接的配置&quot;&gt;1.2.5 数据库连接的配置&lt;/h4&gt;
+&lt;p&gt;数据库连接参数中:
+characterEncoding=utf8会被自动识别为utf8mb4，也可以不加这个参数，会自动检测。
+而autoReconnect=true是必须加上的。&lt;/p&gt;
+
+&lt;h3 id=&quot;126-将db和table的编码转为utf8mb4&quot;&gt;1.2.6 将db和table的编码转为utf8mb4&lt;/h3&gt;
+&lt;p&gt;db:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ALTER DATABASE DB_NAME CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;table:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ALTER TABLE TABLE_NAME CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;还可以更改列的编码&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; ALTER TABLE table_name CHANGE column_name column_name VARCHAR(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;127-插入一条emoji测试&quot;&gt;1.2.7 插入一条emoji，测试&lt;/h4&gt;
+
+&lt;h2 id=&quot;2-latin1字符集包含gbk汉字使用utf8读取会失败&quot;&gt;2 latin1字符集包含gbk汉字，使用utf8读取，会失败&lt;/h2&gt;
+&lt;p&gt;原因是latin1字符集可以根据输入的字符集自动转换。 步骤是&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;设置shell的字符集为你要存入地字符集。如gbk&lt;/li&gt;
+  &lt;li&gt;执行&lt;code class=&quot;highlighter-rouge&quot;&gt;set names latin1&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;插入数据&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;读取地时候也应该使用&lt;code class=&quot;highlighter-rouge&quot;&gt;set names latin1&lt;/code&gt;，如果使用gbk或者utf8来读，会丢数据&lt;/p&gt;
+&lt;h2 id=&quot;3-gbk字符集表使用utf8读取会失败&quot;&gt;3 gbk字符集表使用utf8读取，会失败&lt;/h2&gt;
+&lt;p&gt;插入gbk字符集的步骤是&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;设置shell的字符集为gbk&lt;/li&gt;
+  &lt;li&gt;执行&lt;code class=&quot;highlighter-rouge&quot;&gt;set names gbk&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;插入数据
+读取时自然也要&lt;code class=&quot;highlighter-rouge&quot;&gt;set names gbk&lt;/code&gt;, 如果使用utf8读，有可能丢数据（对于在gbk和utf8中编码相同的字符不会出错。反之出错）&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;附录1-常用字符集&quot;&gt;附录1 常用字符集&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;char set&lt;/th&gt;
+      &lt;th&gt;length&lt;/th&gt;
+      &lt;th&gt;特点&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;utf8&lt;/td&gt;
+      &lt;td&gt;变长，1~3字节&lt;/td&gt;
+      &lt;td&gt;适合处理各种不同语言的文字&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Utf8mb4&lt;/td&gt;
+      &lt;td&gt;变长，1~4字节&lt;/td&gt;
+      &lt;td&gt;比utf8增加了一些生僻字和emoji&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Gbk&lt;/td&gt;
+      &lt;td&gt;定长，双字节&lt;/td&gt;
+      &lt;td&gt;适用于只支持一般中文，且数据量大，性能要求高的场景&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Latin1&lt;/td&gt;
+      &lt;td&gt;MySQL默认字符集&lt;/td&gt;
+      &lt;td&gt;实际可以根据存入数据的类型转换字符集&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name></name></author><category term="笔记" /><summary type="html">1 utf8字符集问题 1.1 简介 mysql 5.5.3增加了utf8mb4（utf8 more byte 4），专门用来支持四字节的unicode（utf8字符集每个字符最多使用三个字节）。 utf8mb4 编码是 utf8编码的超集，所以把utf8改成utf8mb4不需要做其他转换。</summary></entry><entry><title type="html">vim 操作备忘</title><link href="http://localhost:4000/document/2019/05/29/vim-editer.html" rel="alternate" type="text/html" title="vim 操作备忘" /><published>2019-05-29T10:08:00+08:00</published><updated>2019-05-29T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/05/29/vim-editer</id><content type="html" xml:base="http://localhost:4000/document/2019/05/29/vim-editer.html">&lt;h2 id=&quot;系统配置&quot;&gt;系统配置&lt;/h2&gt;
+&lt;p&gt;配置完成之后，tab自动变成4个空格&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot; add by school1024.com
+set ts=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set autoindent
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;旧文件的处理&quot;&gt;旧文件的处理&lt;/h2&gt;
+
+&lt;h3 id=&quot;tab-换成空格&quot;&gt;TAB 换成空格&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;:set ts=4
+:set expandtab
+:%retab!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;空格换成-tab&quot;&gt;空格换成 TAB&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;:set ts=4
+:set noexpandtab
+:%retab!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="笔记" /><summary type="html">系统配置 配置完成之后，tab自动变成4个空格 &quot; add by school1024.com set ts=4 set softtabstop=4 set shiftwidth=4 set expandtab set autoindent</summary></entry><entry><title type="html">科学上网 - google cloud</title><link href="http://localhost:4000/document/2019/05/29/SSR.html" rel="alternate" type="text/html" title="科学上网 - google cloud" /><published>2019-05-29T10:08:00+08:00</published><updated>2019-05-29T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/05/29/SSR</id><content type="html" xml:base="http://localhost:4000/document/2019/05/29/SSR.html">&lt;h3 id=&quot;步骤&quot;&gt;步骤&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;使用带visa的信用卡开通谷歌cloud账号&lt;/li&gt;
+  &lt;li&gt;创建一个vm， 选择debian gnu、linux 8(jessie) 允许http https traffic&lt;/li&gt;
+  &lt;li&gt;测试该vm的ip的速度，测试网站&lt;a href=&quot;https://www.ipip.net/&quot;&gt;ipip.net&lt;/a&gt;。实用工具 TraceRoute 选择最近的服务商。测试路由时间，小于100ms为佳。 若延迟太大，则删除实例重新建实例。&lt;/li&gt;
+  &lt;li&gt;ssh登录vm， 切换root用户   sudo -i&lt;/li&gt;
+  &lt;li&gt;root账户安装 bbr（一种tcp加速器）
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget -N --no-check-certificate https://raw.githubusercontent.com/FunctionClub/YankeeBBR/master/bbr.sh &amp;amp;&amp;amp; bash bbr.sh install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;交互窗口选NO，选择重启&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;重启后再次用ssh连接虚机，切换root用户 sudo -i&lt;/li&gt;
+  &lt;li&gt;root账户启动bbr.sh&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bash bbr.sh start
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ol&gt;
+  &lt;li&gt;下载安装shadowsocksR并启动&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocksR.sh &amp;amp;&amp;amp; chmod +x shadowsocksR.sh
+./shadowsocksR.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;设定初始密码
+设定端口，设定加密方式，其他全默认&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;设置防火墙，进入vpc network &amp;gt; firewall rules,
+设置default-allow-hhtp  default-allow-hhtps的端口为 上一步所设端口&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;安装shadowsocks 客户端，添加已上 密码、host、port ，连接即可&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;tips&quot;&gt;tips&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;实例升级降级： 升级后后host ip会变，其他不变。无需手动过重启bbr或者shadowsocks&lt;/li&gt;
+  &lt;li&gt;mac 客户端&lt;/li&gt;
+  &lt;li&gt;ios 客户端&lt;/li&gt;
+  &lt;li&gt;windows 客户端&lt;/li&gt;
+  &lt;li&gt;android 客户端&lt;/li&gt;
+  &lt;li&gt;小米手机系统原因可能导致ss无法使用，重启手机可能连上。&lt;/li&gt;
+&lt;/ol&gt;</content><author><name></name></author><category term="笔记" /><summary type="html">步骤 使用带visa的信用卡开通谷歌cloud账号 创建一个vm， 选择debian gnu、linux 8(jessie) 允许http https traffic 测试该vm的ip的速度，测试网站ipip.net。实用工具 TraceRoute 选择最近的服务商。测试路由时间，小于100ms为佳。 若延迟太大，则删除实例重新建实例。 ssh登录vm， 切换root用户 sudo -i root账户安装 bbr（一种tcp加速器） wget -N --no-check-certificate https://raw.githubusercontent.com/FunctionClub/YankeeBBR/master/bbr.sh &amp;amp;&amp;amp; bash bbr.sh install 交互窗口选NO，选择重启 重启后再次用ssh连接虚机，切换root用户 sudo -i root账户启动bbr.sh</summary></entry><entry><title type="html">anaconda 环境配置</title><link href="http://localhost:4000/document/2019/05/29/anaconda.html" rel="alternate" type="text/html" title="anaconda 环境配置" /><published>2019-05-29T10:08:00+08:00</published><updated>2019-05-29T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/05/29/anaconda</id><content type="html" xml:base="http://localhost:4000/document/2019/05/29/anaconda.html">&lt;h3 id=&quot;安装python27&quot;&gt;安装python2.7&lt;/h3&gt;
+&lt;p&gt;0、安装conda并给conda设置镜像源
+下载地址：&lt;a href=&quot;https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/&quot;&gt;清华的anaconda镜像&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+conda config --set show_channel_urls yes
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;1、创建虚拟环境&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda create -n py2 python=2.7 // 创建虚拟环境
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;2、激活虚拟环境&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;source activate py2     // 激活虚拟环境
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;3、退出虚拟环境&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;source deactiveate      // 退出虚拟环境
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;4、删除虚拟环境&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda env remove -n env_name
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;5、查看虚拟环境列表&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda env list
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;6、导出虚拟环境配置&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda env export &amp;gt; env.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;7、使用配置文件搭建虚拟环境&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda env create -f env.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;8、管理包&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// 下载包
+conda install package_name=version
+// 删除包
+conda remove package_name
+// 更新包
+conda update package_name
+// 列出所有包
+conda list
+// 查找包
+conda search package_name
+// 管理指定虚拟环境的包
+conda install package_name -n env_name
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="笔记" /><summary type="html">安装python2.7 0、安装conda并给conda设置镜像源 下载地址：清华的anaconda镜像 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/ conda config --set show_channel_urls yes conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2019/05/29/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2019-05-29T09:45:54+08:00</published><updated>2019-05-29T09:45:54+08:00</updated><id>http://localhost:4000/jekyll/update/2019/05/29/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2019/05/29/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
 
 &lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
 

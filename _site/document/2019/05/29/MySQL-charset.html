@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>MySQL的字符集 | Your awesome title</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="MySQL的字符集" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="1 utf8字符集问题 1.1 简介 mysql 5.5.3增加了utf8mb4（utf8 more byte 4），专门用来支持四字节的unicode（utf8字符集每个字符最多使用三个字节）。 utf8mb4 编码是 utf8编码的超集，所以把utf8改成utf8mb4不需要做其他转换。" />
+<meta property="og:description" content="1 utf8字符集问题 1.1 简介 mysql 5.5.3增加了utf8mb4（utf8 more byte 4），专门用来支持四字节的unicode（utf8字符集每个字符最多使用三个字节）。 utf8mb4 编码是 utf8编码的超集，所以把utf8改成utf8mb4不需要做其他转换。" />
+<link rel="canonical" href="http://localhost:4000/document/2019/05/29/MySQL-charset.html" />
+<meta property="og:url" content="http://localhost:4000/document/2019/05/29/MySQL-charset.html" />
+<meta property="og:site_name" content="Your awesome title" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-05-29T10:08:00+08:00" />
+<script type="application/ld+json">
+{"description":"1 utf8字符集问题 1.1 简介 mysql 5.5.3增加了utf8mb4（utf8 more byte 4），专门用来支持四字节的unicode（utf8字符集每个字符最多使用三个字节）。 utf8mb4 编码是 utf8编码的超集，所以把utf8改成utf8mb4不需要做其他转换。","@type":"BlogPosting","url":"http://localhost:4000/document/2019/05/29/MySQL-charset.html","headline":"MySQL的字符集","dateModified":"2019-05-29T10:08:00+08:00","datePublished":"2019-05-29T10:08:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/document/2019/05/29/MySQL-charset.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Your awesome title" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Your awesome title</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">MySQL的字符集</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2019-05-29T10:08:00+08:00" itemprop="datePublished">May 29, 2019
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h2 id="1-utf8字符集问题">1 utf8字符集问题</h2>
+<h3 id="11-简介">1.1 简介</h3>
+<p>mysql 5.5.3增加了utf8mb4（utf8 more byte 4），专门用来支持四字节的unicode（utf8字符集每个字符最多使用三个字节）。 utf8mb4 编码是 utf8编码的超集，所以把utf8改成utf8mb4不需要做其他转换。</p>
+
+<p>开发时，为了获取更好的兼容性，应该总是使用 utf8mb4 而非 utf8.  对于 CHAR 类型数据，utf8mb4 会多消耗一些空间，根据 Mysql 官方建议，使用 VARCHAR  替代 CHAR。</p>
+
+<h3 id="12-修改mysql的编码为utf8mb4">1.2 修改MySQL的编码为utf8mb4</h3>
+<h4 id="121-mysql版本为-553">1.2.1 MySQL版本为 5.5.3+</h4>
+
+<h4 id="122-mysql驱动-5113">1.2.2 MySQL驱动 5.1.13+</h4>
+
+<h4 id="123-修改mysql配置文件mycnf">1.2.3 修改MySQL配置文件my.cnf</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>修改mysql配置文件my.cnf（windows为my.ini）
+my.cnf一般在etc/mysql/my.cnf位置。找到后请在以下三部分里添加如下内容：
+[client]
+default-character-set = utf8mb4
+[mysql]
+default-character-set = utf8mb4
+[mysqld]
+character-set-client-handshake = FALSE
+character-set-server = utf8mb4
+collation-server = utf8mb4_unicode_ci
+init_connect=’SET NAMES utf8mb4’
+</code></pre></div></div>
+<h4 id="124-重启数据库检查变量">1.2.4 重启数据库，检查变量</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SHOW VARIABLES WHERE Variable_name LIKE 'character\_set\_%' OR Variable_name LIKE 'collation%';
+</code></pre></div></div>
+<p>要保证以下5个变量为utf8mb4：
+<img src="media/15571962426038/15571964982291.jpg" alt="" /></p>
+
+<p>附：各种与字符集相关的变量</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Variable_name</th>
+      <th>Value</th>
+      <th>define</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>character_set_client</td>
+      <td>utf8mb4</td>
+      <td>客户端来源数据使用的字符集，也就是客户端发过来的查询语句使用的什么字符集</td>
+    </tr>
+    <tr>
+      <td>character_set_connection</td>
+      <td>utf8mb4</td>
+      <td>MySQL接受到用户查询后，按照character_set_client将其转化为character_set_connection设定的字符集。</td>
+    </tr>
+    <tr>
+      <td>character_set_database</td>
+      <td>utf8</td>
+      <td>当前选中数据库的默认字符集</td>
+    </tr>
+    <tr>
+      <td>character_set_filesystem</td>
+      <td>binary</td>
+      <td>进行文件读写时转换文件名， 默认binary为不转换</td>
+    </tr>
+    <tr>
+      <td>character_set_results</td>
+      <td>utf8mb4</td>
+      <td>查询结果编码的字符集</td>
+    </tr>
+    <tr>
+      <td>character_set_server</td>
+      <td>utf8mb4</td>
+      <td>默认的内部操作字符集</td>
+    </tr>
+    <tr>
+      <td>character_set_system</td>
+      <td>utf8</td>
+      <td>元数据的字符集，如库表名、用户名等</td>
+    </tr>
+    <tr>
+      <td>collation_connection</td>
+      <td>utf8mb4_unicode_ci</td>
+      <td>执行字符比较时采用的编码规则</td>
+    </tr>
+    <tr>
+      <td>collation_database</td>
+      <td>utf8_general_ci</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>collation_server</td>
+      <td>utf8mb4_unicode_ci</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="125-数据库连接的配置">1.2.5 数据库连接的配置</h4>
+<p>数据库连接参数中:
+characterEncoding=utf8会被自动识别为utf8mb4，也可以不加这个参数，会自动检测。
+而autoReconnect=true是必须加上的。</p>
+
+<h3 id="126-将db和table的编码转为utf8mb4">1.2.6 将db和table的编码转为utf8mb4</h3>
+<p>db:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ALTER DATABASE DB_NAME CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+</code></pre></div></div>
+
+<p>table:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ALTER TABLE TABLE_NAME CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci; 
+</code></pre></div></div>
+
+<p>还可以更改列的编码</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> ALTER TABLE table_name CHANGE column_name column_name VARCHAR(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;  
+</code></pre></div></div>
+
+<h4 id="127-插入一条emoji测试">1.2.7 插入一条emoji，测试</h4>
+
+<h2 id="2-latin1字符集包含gbk汉字使用utf8读取会失败">2 latin1字符集包含gbk汉字，使用utf8读取，会失败</h2>
+<p>原因是latin1字符集可以根据输入的字符集自动转换。 步骤是</p>
+<ol>
+  <li>设置shell的字符集为你要存入地字符集。如gbk</li>
+  <li>执行<code class="highlighter-rouge">set names latin1</code></li>
+  <li>插入数据</li>
+</ol>
+
+<p>读取地时候也应该使用<code class="highlighter-rouge">set names latin1</code>，如果使用gbk或者utf8来读，会丢数据</p>
+<h2 id="3-gbk字符集表使用utf8读取会失败">3 gbk字符集表使用utf8读取，会失败</h2>
+<p>插入gbk字符集的步骤是</p>
+<ol>
+  <li>设置shell的字符集为gbk</li>
+  <li>执行<code class="highlighter-rouge">set names gbk</code></li>
+  <li>插入数据
+读取时自然也要<code class="highlighter-rouge">set names gbk</code>, 如果使用utf8读，有可能丢数据（对于在gbk和utf8中编码相同的字符不会出错。反之出错）</li>
+</ol>
+
+<h2 id="附录1-常用字符集">附录1 常用字符集</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>char set</th>
+      <th>length</th>
+      <th>特点</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>utf8</td>
+      <td>变长，1~3字节</td>
+      <td>适合处理各种不同语言的文字</td>
+    </tr>
+    <tr>
+      <td>Utf8mb4</td>
+      <td>变长，1~4字节</td>
+      <td>比utf8增加了一些生僻字和emoji</td>
+    </tr>
+    <tr>
+      <td>Gbk</td>
+      <td>定长，双字节</td>
+      <td>适用于只支持一般中文，且数据量大，性能要求高的场景</td>
+    </tr>
+    <tr>
+      <td>Latin1</td>
+      <td>MySQL默认字符集</td>
+      <td>实际可以根据存入数据的类型转换字符集</td>
+    </tr>
+  </tbody>
+</table>
+
+
+  </div><a class="u-url" href="/document/2019/05/29/MySQL-charset.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Your awesome title</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Your awesome title</li><li><a class="u-email" href="mailto:your-email@example.com">your-email@example.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/jekyll"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">jekyll</span></a></li><li><a href="https://www.twitter.com/jekyllrb"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">jekyllrb</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
