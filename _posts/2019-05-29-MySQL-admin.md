@@ -5,12 +5,8 @@ date:   2019-05-29 10:08:00 +0800
 categories: document
 tag: 教程
 ---
-## rds
-1、 rds上用root登录
-
-```
-mysql.local
-```
+## 用户与权限类
+1、 用root登录
 ```
 cd ~/mysql&&./bin/mysql --defaults-file=etc/user.root.cnf
 ```
