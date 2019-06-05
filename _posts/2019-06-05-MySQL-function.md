@@ -193,3 +193,6 @@ DROP VIEW [IF EXISTS]
 view_name [, view_name] ...
 [RESTRICT | CASCADE]
 ```
+
+## 参考
+* [MySQL官方文档-创建procedure](https://dev.mysql.com/doc/refman/8.0/en/create-procedure.html)

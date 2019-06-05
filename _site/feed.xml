@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-06-05T11:17:40+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Diego’s</title><subtitle>此心安处是吾乡.</subtitle><entry><title type="html">MySQL的函数、存储过程、触发器、事件、视图</title><link href="http://localhost:4000/document/2019/06/05/MySQL-function.html" rel="alternate" type="text/html" title="MySQL的函数、存储过程、触发器、事件、视图" /><published>2019-06-05T10:38:00+08:00</published><updated>2019-06-05T10:38:00+08:00</updated><id>http://localhost:4000/document/2019/06/05/MySQL-function</id><content type="html" xml:base="http://localhost:4000/document/2019/06/05/MySQL-function.html">&lt;h2 id=&quot;1-定义&quot;&gt;1 定义&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-06-05T20:41:09+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Diego’s</title><subtitle>此心安处是吾乡.</subtitle><entry><title type="html">MySQL的函数、存储过程、触发器、事件、视图</title><link href="http://localhost:4000/document/2019/06/05/MySQL-function.html" rel="alternate" type="text/html" title="MySQL的函数、存储过程、触发器、事件、视图" /><published>2019-06-05T10:38:00+08:00</published><updated>2019-06-05T10:38:00+08:00</updated><id>http://localhost:4000/document/2019/06/05/MySQL-function</id><content type="html" xml:base="http://localhost:4000/document/2019/06/05/MySQL-function.html">&lt;h2 id=&quot;1-定义&quot;&gt;1 定义&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;函数（function）: 如&lt;code class=&quot;highlighter-rouge&quot;&gt;count()&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;max()&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;min()&lt;/code&gt; 等是系统函数，也可以用自己创建function&lt;/li&gt;
   &lt;li&gt;存储过程（procedure）: 一组为了完成特定功能的SQL 语句集，存储在数据库中，经过第一次编译后再次调用不需要再次编译，比一个个执行sql语句效率高。&lt;/li&gt;
@@ -167,7 +167,12 @@ AS select_statement
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;DROP VIEW [IF EXISTS]
 view_name [, view_name] ...
 [RESTRICT | CASCADE]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="笔记" /><summary type="html">1 定义 函数（function）: 如count(), max(), min() 等是系统函数，也可以用自己创建function 存储过程（procedure）: 一组为了完成特定功能的SQL 语句集，存储在数据库中，经过第一次编译后再次调用不需要再次编译，比一个个执行sql语句效率高。 触发器（trigger） 事件（event）事件调度器是MySQL5.1后新增的功能，可以将数据库按自定义的时间周期触发某种操作，可以理解为时间触发器，类似于linux系统下面的任务调度器crontab 视图（view）视图是一个虚拟表，其内容由查询定义。 使用它主要出于两种原因：1. 安全原因， 视图可以隐藏一些数据，如：社会保险基金表，可以用视图只显示姓名，地址，而不显示社会保险号和工资数等，2. 另一原因是可使复杂的查询易于理解和使用</summary></entry><entry><title type="html">vim 操作备忘</title><link href="http://localhost:4000/document/2019/05/29/vim-editer.html" rel="alternate" type="text/html" title="vim 操作备忘" /><published>2019-05-29T10:08:00+08:00</published><updated>2019-05-29T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/05/29/vim-editer</id><content type="html" xml:base="http://localhost:4000/document/2019/05/29/vim-editer.html">&lt;h2 id=&quot;系统配置&quot;&gt;系统配置&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;参考&quot;&gt;参考&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://dev.mysql.com/doc/refman/8.0/en/create-procedure.html&quot;&gt;MySQL官方文档-创建procedure&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="笔记" /><summary type="html">1 定义 函数（function）: 如count(), max(), min() 等是系统函数，也可以用自己创建function 存储过程（procedure）: 一组为了完成特定功能的SQL 语句集，存储在数据库中，经过第一次编译后再次调用不需要再次编译，比一个个执行sql语句效率高。 触发器（trigger） 事件（event）事件调度器是MySQL5.1后新增的功能，可以将数据库按自定义的时间周期触发某种操作，可以理解为时间触发器，类似于linux系统下面的任务调度器crontab 视图（view）视图是一个虚拟表，其内容由查询定义。 使用它主要出于两种原因：1. 安全原因， 视图可以隐藏一些数据，如：社会保险基金表，可以用视图只显示姓名，地址，而不显示社会保险号和工资数等，2. 另一原因是可使复杂的查询易于理解和使用</summary></entry><entry><title type="html">vim 操作备忘</title><link href="http://localhost:4000/document/2019/05/29/vim-editer.html" rel="alternate" type="text/html" title="vim 操作备忘" /><published>2019-05-29T10:08:00+08:00</published><updated>2019-05-29T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/05/29/vim-editer</id><content type="html" xml:base="http://localhost:4000/document/2019/05/29/vim-editer.html">&lt;h2 id=&quot;系统配置&quot;&gt;系统配置&lt;/h2&gt;
 &lt;p&gt;配置完成之后，tab自动变成4个空格&lt;/p&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot; add by school1024.com
 set ts=4
@@ -608,21 +613,24 @@ conda install package_name -n env_name
 &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry><entry><title type="html">常用git命令</title><link href="http://localhost:4000/2019/05/29/git-cmds.html" rel="alternate" type="text/html" title="常用git命令" /><published>2019-05-29T00:00:00+08:00</published><updated>2019-05-29T00:00:00+08:00</updated><id>http://localhost:4000/2019/05/29/git-cmds</id><content type="html" xml:base="http://localhost:4000/2019/05/29/git-cmds.html">&lt;h3 id=&quot;1-撤销本地工作区的更改&quot;&gt;1. 撤销本地工作区的更改&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git checkout -- filename # 撤销一个文件的修改
-git checkout . #本地所有修改的。没有的提交的，都返回到原来的状态
-git stash  #把所有没有提交的修改暂存到stash里面。可用git stash pop回复。
-git reset --hard HASH #返回到某个节点，不保留修改。
-git reset --soft HASH#返回到某个节点。保留修改 
-git reset --hard HEAD : 将stage area中未提交的file回滚到之前的commit状态
-git clean -d -f 删除未跟踪的目录和文件
---------------------- 
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git checkout &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; filename  //撤销一个文件的修改,用commit的版本覆盖当前工作区的版本
+git checkout &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;  // 本地所有修改的。没有的提交的，都返回到原来的状态
+git stash  //把所有没有提交的修改暂存到stash里面。可用git stash pop回复。
+git reset &lt;span class=&quot;nt&quot;&gt;--hard&lt;/span&gt; HASH   //返回到某个节点，不保留修改。
+git reset &lt;span class=&quot;nt&quot;&gt;--soft&lt;/span&gt; HASH  //返回到某个节点。保留修改 
+git reset HEAD   // 撤销所有add的文件
+git reset HEAD filename   // 撤销add的某个文件
+git reset &lt;span class=&quot;nt&quot;&gt;--hard&lt;/span&gt; HEAD  //将stage area中未提交的file回滚到之前的commit状态
+git clean &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt;        //删除未跟踪的目录和文件
+&lt;span class=&quot;nt&quot;&gt;---------------------&lt;/span&gt; 
 作者：chi1130 
 来源：CSDN 
 原文：https://blog.csdn.net/chi1130/article/details/71584190 
-版权声明：本文为博主原创文章，转载请附上博文链接！
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+版权声明：本文为博主原创文章，转载请附上博文链接！&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
 &lt;h3 id=&quot;2-diff-tow-branchs&quot;&gt;2. diff tow branchs&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git diff branch1 branch2 --stat // list all diff file names
-git diff branch1 branch2 // list all diff of all files
-git diff branch2 branch2 file1// list diff of file1
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><summary type="html">1. 撤销本地工作区的更改 git checkout -- filename # 撤销一个文件的修改 git checkout . #本地所有修改的。没有的提交的，都返回到原来的状态 git stash #把所有没有提交的修改暂存到stash里面。可用git stash pop回复。 git reset --hard HASH #返回到某个节点，不保留修改。 git reset --soft HASH#返回到某个节点。保留修改 git reset --hard HEAD : 将stage area中未提交的file回滚到之前的commit状态 git clean -d -f 删除未跟踪的目录和文件 --------------------- 作者：chi1130 来源：CSDN 原文：https://blog.csdn.net/chi1130/article/details/71584190 版权声明：本文为博主原创文章，转载请附上博文链接！ 2. diff tow branchs git diff branch1 branch2 --stat // list all diff file names git diff branch1 branch2 // list all diff of all files git diff branch2 branch2 file1// list diff of file1</summary></entry></feed>
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git diff branch1 branch2 &lt;span class=&quot;nt&quot;&gt;--stat&lt;/span&gt;   // list all diff file names
+git diff branch1 branch2          // list all diff of all files
+git diff branch2 branch2 file1    // list diff of file1&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name></name></author><summary type="html">1. 撤销本地工作区的更改 git checkout -- filename //撤销一个文件的修改,用commit的版本覆盖当前工作区的版本 git checkout . // 本地所有修改的。没有的提交的，都返回到原来的状态 git stash //把所有没有提交的修改暂存到stash里面。可用git stash pop回复。 git reset --hard HASH //返回到某个节点，不保留修改。 git reset --soft HASH //返回到某个节点。保留修改 git reset HEAD // 撤销所有add的文件 git reset HEAD filename // 撤销add的某个文件 git reset --hard HEAD //将stage area中未提交的file回滚到之前的commit状态 git clean -d -f //删除未跟踪的目录和文件 --------------------- 作者：chi1130 来源：CSDN 原文：https://blog.csdn.net/chi1130/article/details/71584190 版权声明：本文为博主原创文章，转载请附上博文链接！</summary></entry></feed>

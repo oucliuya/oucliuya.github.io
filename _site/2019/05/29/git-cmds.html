@@ -7,15 +7,15 @@
 <meta name="generator" content="Jekyll v3.8.5" />
 <meta property="og:title" content="常用git命令" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="1. 撤销本地工作区的更改 git checkout -- filename # 撤销一个文件的修改 git checkout . #本地所有修改的。没有的提交的，都返回到原来的状态 git stash #把所有没有提交的修改暂存到stash里面。可用git stash pop回复。 git reset --hard HASH #返回到某个节点，不保留修改。 git reset --soft HASH#返回到某个节点。保留修改 git reset --hard HEAD : 将stage area中未提交的file回滚到之前的commit状态 git clean -d -f 删除未跟踪的目录和文件 --------------------- 作者：chi1130 来源：CSDN 原文：https://blog.csdn.net/chi1130/article/details/71584190 版权声明：本文为博主原创文章，转载请附上博文链接！ 2. diff tow branchs git diff branch1 branch2 --stat // list all diff file names git diff branch1 branch2 // list all diff of all files git diff branch2 branch2 file1// list diff of file1" />
-<meta property="og:description" content="1. 撤销本地工作区的更改 git checkout -- filename # 撤销一个文件的修改 git checkout . #本地所有修改的。没有的提交的，都返回到原来的状态 git stash #把所有没有提交的修改暂存到stash里面。可用git stash pop回复。 git reset --hard HASH #返回到某个节点，不保留修改。 git reset --soft HASH#返回到某个节点。保留修改 git reset --hard HEAD : 将stage area中未提交的file回滚到之前的commit状态 git clean -d -f 删除未跟踪的目录和文件 --------------------- 作者：chi1130 来源：CSDN 原文：https://blog.csdn.net/chi1130/article/details/71584190 版权声明：本文为博主原创文章，转载请附上博文链接！ 2. diff tow branchs git diff branch1 branch2 --stat // list all diff file names git diff branch1 branch2 // list all diff of all files git diff branch2 branch2 file1// list diff of file1" />
+<meta name="description" content="1. 撤销本地工作区的更改 git checkout -- filename //撤销一个文件的修改,用commit的版本覆盖当前工作区的版本 git checkout . // 本地所有修改的。没有的提交的，都返回到原来的状态 git stash //把所有没有提交的修改暂存到stash里面。可用git stash pop回复。 git reset --hard HASH //返回到某个节点，不保留修改。 git reset --soft HASH //返回到某个节点。保留修改 git reset HEAD // 撤销所有add的文件 git reset HEAD filename // 撤销add的某个文件 git reset --hard HEAD //将stage area中未提交的file回滚到之前的commit状态 git clean -d -f //删除未跟踪的目录和文件 --------------------- 作者：chi1130 来源：CSDN 原文：https://blog.csdn.net/chi1130/article/details/71584190 版权声明：本文为博主原创文章，转载请附上博文链接！" />
+<meta property="og:description" content="1. 撤销本地工作区的更改 git checkout -- filename //撤销一个文件的修改,用commit的版本覆盖当前工作区的版本 git checkout . // 本地所有修改的。没有的提交的，都返回到原来的状态 git stash //把所有没有提交的修改暂存到stash里面。可用git stash pop回复。 git reset --hard HASH //返回到某个节点，不保留修改。 git reset --soft HASH //返回到某个节点。保留修改 git reset HEAD // 撤销所有add的文件 git reset HEAD filename // 撤销add的某个文件 git reset --hard HEAD //将stage area中未提交的file回滚到之前的commit状态 git clean -d -f //删除未跟踪的目录和文件 --------------------- 作者：chi1130 来源：CSDN 原文：https://blog.csdn.net/chi1130/article/details/71584190 版权声明：本文为博主原创文章，转载请附上博文链接！" />
 <link rel="canonical" href="http://localhost:4000/2019/05/29/git-cmds.html" />
 <meta property="og:url" content="http://localhost:4000/2019/05/29/git-cmds.html" />
 <meta property="og:site_name" content="Diego’s" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2019-05-29T00:00:00+08:00" />
 <script type="application/ld+json">
-{"description":"1. 撤销本地工作区的更改 git checkout -- filename # 撤销一个文件的修改 git checkout . #本地所有修改的。没有的提交的，都返回到原来的状态 git stash #把所有没有提交的修改暂存到stash里面。可用git stash pop回复。 git reset --hard HASH #返回到某个节点，不保留修改。 git reset --soft HASH#返回到某个节点。保留修改 git reset --hard HEAD : 将stage area中未提交的file回滚到之前的commit状态 git clean -d -f 删除未跟踪的目录和文件 --------------------- 作者：chi1130 来源：CSDN 原文：https://blog.csdn.net/chi1130/article/details/71584190 版权声明：本文为博主原创文章，转载请附上博文链接！ 2. diff tow branchs git diff branch1 branch2 --stat // list all diff file names git diff branch1 branch2 // list all diff of all files git diff branch2 branch2 file1// list diff of file1","@type":"BlogPosting","url":"http://localhost:4000/2019/05/29/git-cmds.html","headline":"常用git命令","dateModified":"2019-05-29T00:00:00+08:00","datePublished":"2019-05-29T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2019/05/29/git-cmds.html"},"@context":"https://schema.org"}</script>
+{"description":"1. 撤销本地工作区的更改 git checkout -- filename //撤销一个文件的修改,用commit的版本覆盖当前工作区的版本 git checkout . // 本地所有修改的。没有的提交的，都返回到原来的状态 git stash //把所有没有提交的修改暂存到stash里面。可用git stash pop回复。 git reset --hard HASH //返回到某个节点，不保留修改。 git reset --soft HASH //返回到某个节点。保留修改 git reset HEAD // 撤销所有add的文件 git reset HEAD filename // 撤销add的某个文件 git reset --hard HEAD //将stage area中未提交的file回滚到之前的commit状态 git clean -d -f //删除未跟踪的目录和文件 --------------------- 作者：chi1130 来源：CSDN 原文：https://blog.csdn.net/chi1130/article/details/71584190 版权声明：本文为博主原创文章，转载请附上博文链接！","@type":"BlogPosting","url":"http://localhost:4000/2019/05/29/git-cmds.html","headline":"常用git命令","dateModified":"2019-05-29T00:00:00+08:00","datePublished":"2019-05-29T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2019/05/29/git-cmds.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Diego's" /></head>
 <body><header class="site-header" role="banner">
@@ -46,24 +46,27 @@
 
   <div class="post-content e-content" itemprop="articleBody">
     <h3 id="1-撤销本地工作区的更改">1. 撤销本地工作区的更改</h3>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout -- filename # 撤销一个文件的修改
-git checkout . #本地所有修改的。没有的提交的，都返回到原来的状态
-git stash  #把所有没有提交的修改暂存到stash里面。可用git stash pop回复。
-git reset --hard HASH #返回到某个节点，不保留修改。
-git reset --soft HASH#返回到某个节点。保留修改 
-git reset --hard HEAD : 将stage area中未提交的file回滚到之前的commit状态
-git clean -d -f 删除未跟踪的目录和文件
---------------------- 
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git checkout <span class="nt">--</span> filename  //撤销一个文件的修改,用commit的版本覆盖当前工作区的版本
+git checkout <span class="nb">.</span>  // 本地所有修改的。没有的提交的，都返回到原来的状态
+git stash  //把所有没有提交的修改暂存到stash里面。可用git stash pop回复。
+git reset <span class="nt">--hard</span> HASH   //返回到某个节点，不保留修改。
+git reset <span class="nt">--soft</span> HASH  //返回到某个节点。保留修改 
+git reset HEAD   // 撤销所有add的文件
+git reset HEAD filename   // 撤销add的某个文件
+git reset <span class="nt">--hard</span> HEAD  //将stage area中未提交的file回滚到之前的commit状态
+git clean <span class="nt">-d</span> <span class="nt">-f</span>        //删除未跟踪的目录和文件
+<span class="nt">---------------------</span> 
 作者：chi1130 
 来源：CSDN 
 原文：https://blog.csdn.net/chi1130/article/details/71584190 
-版权声明：本文为博主原创文章，转载请附上博文链接！
-</code></pre></div></div>
+版权声明：本文为博主原创文章，转载请附上博文链接！</code></pre></figure>
+
 <h3 id="2-diff-tow-branchs">2. diff tow branchs</h3>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff branch1 branch2 --stat // list all diff file names
-git diff branch1 branch2 // list all diff of all files
-git diff branch2 branch2 file1// list diff of file1
-</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git diff branch1 branch2 <span class="nt">--stat</span>   // list all diff file names
+git diff branch1 branch2          // list all diff of all files
+git diff branch2 branch2 file1    // list diff of file1</code></pre></figure>
 
   </div><a class="u-url" href="/2019/05/29/git-cmds.html" hidden></a>
 </article>
