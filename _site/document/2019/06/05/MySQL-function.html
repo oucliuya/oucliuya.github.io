@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>MySQL的函数、存储过程、触发器、事件、视图 | Diego’s</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="MySQL的函数、存储过程、触发器、事件、视图" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="1 定义 函数（function）: 如count(), max(), min() 等是系统函数，也可以用自己创建function 存储过程（procedure）: 一组为了完成特定功能的SQL 语句集，存储在数据库中，经过第一次编译后再次调用不需要再次编译，比一个个执行sql语句效率高。 触发器（trigger） 事件（event）事件调度器是MySQL5.1后新增的功能，可以将数据库按自定义的时间周期触发某种操作，可以理解为时间触发器，类似于linux系统下面的任务调度器crontab 视图（view）视图是一个虚拟表，其内容由查询定义。 使用它主要出于两种原因：1. 安全原因， 视图可以隐藏一些数据，如：社会保险基金表，可以用视图只显示姓名，地址，而不显示社会保险号和工资数等，2. 另一原因是可使复杂的查询易于理解和使用" />
+<meta property="og:description" content="1 定义 函数（function）: 如count(), max(), min() 等是系统函数，也可以用自己创建function 存储过程（procedure）: 一组为了完成特定功能的SQL 语句集，存储在数据库中，经过第一次编译后再次调用不需要再次编译，比一个个执行sql语句效率高。 触发器（trigger） 事件（event）事件调度器是MySQL5.1后新增的功能，可以将数据库按自定义的时间周期触发某种操作，可以理解为时间触发器，类似于linux系统下面的任务调度器crontab 视图（view）视图是一个虚拟表，其内容由查询定义。 使用它主要出于两种原因：1. 安全原因， 视图可以隐藏一些数据，如：社会保险基金表，可以用视图只显示姓名，地址，而不显示社会保险号和工资数等，2. 另一原因是可使复杂的查询易于理解和使用" />
+<link rel="canonical" href="http://localhost:4000/document/2019/06/05/MySQL-function.html" />
+<meta property="og:url" content="http://localhost:4000/document/2019/06/05/MySQL-function.html" />
+<meta property="og:site_name" content="Diego’s" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-06-05T10:38:00+08:00" />
+<script type="application/ld+json">
+{"description":"1 定义 函数（function）: 如count(), max(), min() 等是系统函数，也可以用自己创建function 存储过程（procedure）: 一组为了完成特定功能的SQL 语句集，存储在数据库中，经过第一次编译后再次调用不需要再次编译，比一个个执行sql语句效率高。 触发器（trigger） 事件（event）事件调度器是MySQL5.1后新增的功能，可以将数据库按自定义的时间周期触发某种操作，可以理解为时间触发器，类似于linux系统下面的任务调度器crontab 视图（view）视图是一个虚拟表，其内容由查询定义。 使用它主要出于两种原因：1. 安全原因， 视图可以隐藏一些数据，如：社会保险基金表，可以用视图只显示姓名，地址，而不显示社会保险号和工资数等，2. 另一原因是可使复杂的查询易于理解和使用","@type":"BlogPosting","url":"http://localhost:4000/document/2019/06/05/MySQL-function.html","headline":"MySQL的函数、存储过程、触发器、事件、视图","dateModified":"2019-06-05T10:38:00+08:00","datePublished":"2019-06-05T10:38:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/document/2019/06/05/MySQL-function.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Diego's" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Diego&#39;s</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">MySQL的函数、存储过程、触发器、事件、视图</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2019-06-05T10:38:00+08:00" itemprop="datePublished">Jun 5, 2019
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h2 id="1-定义">1 定义</h2>
+<ul>
+  <li>函数（function）: 如<code class="highlighter-rouge">count()</code>, <code class="highlighter-rouge">max()</code>, <code class="highlighter-rouge">min()</code> 等是系统函数，也可以用自己创建function</li>
+  <li>存储过程（procedure）: 一组为了完成特定功能的SQL 语句集，存储在数据库中，经过第一次编译后再次调用不需要再次编译，比一个个执行sql语句效率高。</li>
+  <li>触发器（trigger）</li>
+  <li>事件（event）事件调度器是MySQL5.1后新增的功能，可以将数据库按自定义的时间周期触发某种操作，可以理解为时间触发器，类似于linux系统下面的任务调度器crontab</li>
+  <li>视图（view）视图是一个虚拟表，其内容由查询定义。 使用它主要出于两种原因：1. 安全原因， 视图可以隐藏一些数据，如：社会保险基金表，可以用视图只显示姓名，地址，而不显示社会保险号和工资数等，2. 另一原因是可使复杂的查询易于理解和使用</li>
+</ul>
+
+<h2 id="2-操作">2 操作</h2>
+
+<h3 id="21-函数">2.1 函数</h3>
+<p>查看函数列表</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SHOW FUNCTION STATUS where db='指定库';
+</code></pre></div></div>
+<p>创建</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE FUNCTION 函数名称(参数列表)
+　　RETURNS 返回值类型
+　　函数体
+</code></pre></div></div>
+<p>修改</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ALTER FUNCTION 函数名称 [characteristic ...]
+</code></pre></div></div>
+<p>删除</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DROP FUNCTION [IF EXISTS] 函数名称
+</code></pre></div></div>
+<p>调用</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT 函数名称(参数列表)
+</code></pre></div></div>
+
+<h3 id="22-存储过程">2.2 存储过程</h3>
+<p>查看存储过程列表</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SHOW PROCEDURE STATUS where db='指定库';
+</code></pre></div></div>
+<p>创建</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE PROCEDURE 过程名 (参数列表) [characteristic ...]
+    函数体
+</code></pre></div></div>
+<p>修改</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ALTER PROCEDURE  过程名 [characteristic ...]
+</code></pre></div></div>
+<p>删除</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DROP PROCEDURE [IF EXISTS] 过程名
+</code></pre></div></div>
+<p>调用</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CALL 过程名(参数列表)
+</code></pre></div></div>
+<h3 id="23-触发器">2.3 触发器</h3>
+<p>创建</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE TRIGGER &lt;触发器名称&gt;  --触发器必须有名字，最多64个字符，可能后面会附有分隔符.它和MySQL中其他对象的命名方式基本相象.
+{ BEFORE | AFTER }  --触发器有执行的时间设置：可以设置为事件发生前或后。
+{ INSERT | UPDATE | DELETE }  --同样也能设定触发的事件：它们可以在执行insert、update或delete的过程中触发。
+ON &lt;表名称&gt;  --触发器是属于某一个表的:当在这个表上执行插入、 更新或删除操作的时候就导致触发器的激活. 我们不能给同一张表的同一个事件安排两个触发器。
+FOR EACH ROW  --触发器的执行间隔：FOR EACH ROW子句通知触发器 每隔一行执行一次动作，而不是对整个表执行一次。
+&lt;触发器SQL语句&gt;  --触发器包含所要触发的SQL语句：这里的语句可以是任何合法的语句， 包括复合语句，但是这里的语句受的限制和函数的一样。
+--创建触发器（CREATE TRIGGER），需要SUPER权限。
+</code></pre></div></div>
+<p>eg:</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">TRIGGER</span> <span class="n">testref</span> <span class="k">BEFORE</span> <span class="k">INSERT</span> <span class="k">ON</span> <span class="n">test1</span>
+  <span class="k">FOR</span> <span class="k">EACH</span> <span class="k">ROW</span> <span class="k">BEGIN</span>
+    <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">test2</span> <span class="k">SET</span> <span class="n">a2</span> <span class="o">=</span> <span class="k">NEW</span><span class="p">.</span><span class="n">a1</span><span class="p">;</span>
+    <span class="k">DELETE</span> <span class="k">FROM</span> <span class="n">test3</span> <span class="k">WHERE</span> <span class="n">a3</span> <span class="o">=</span> <span class="k">NEW</span><span class="p">.</span><span class="n">a1</span><span class="p">;</span>  
+    <span class="k">UPDATE</span> <span class="n">test4</span> <span class="k">SET</span> <span class="n">b4</span> <span class="o">=</span> <span class="n">b4</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">WHERE</span> <span class="n">a4</span> <span class="o">=</span> <span class="k">NEW</span><span class="p">.</span><span class="n">a1</span><span class="p">;</span>
+  <span class="k">END</span></code></pre></figure>
+
+<p>删除</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DORP TRIGGER 方案名称.触发器名称
+</code></pre></div></div>
+
+<h3 id="24-事件">2.4 事件</h3>
+<p>创建</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">CREATE</span>
+
+    <span class="p">[</span><span class="k">DEFINER</span> <span class="o">=</span> <span class="err">{</span> <span class="k">user</span> <span class="o">|</span> <span class="k">CURRENT_USER</span> <span class="err">}</span><span class="p">]</span>   <span class="c1">--定义事件执行的时候检查权限的用户。</span>
+
+    <span class="n">EVENT</span>
+
+    <span class="p">[</span><span class="n">IF</span> <span class="k">NOT</span> <span class="k">EXISTS</span><span class="p">]</span>
+
+    <span class="n">event_name</span>
+
+    <span class="k">ON</span> <span class="n">SCHEDULE</span> <span class="n">schedule</span>              <span class="c1">--定义执行的时间和时间间隔。</span>
+
+    <span class="p">[</span><span class="k">ON</span> <span class="k">COMPLETION</span> <span class="p">[</span><span class="k">NOT</span><span class="p">]</span> <span class="k">PRESERVE</span><span class="p">]</span>     <span class="c1">--定义事件是一次执行还是永久执行，默认为一次执行，即NOT PRESERVE。</span>
+
+    <span class="p">[</span><span class="n">ENABLE</span> <span class="o">|</span> <span class="n">DISABLE</span> <span class="o">|</span> <span class="n">DISABLE</span> <span class="k">ON</span> <span class="n">SLAVE</span><span class="p">]</span>   <span class="c1">--定义事件创建以后是开启还是关闭，以及在从上关闭。如果是从服务器自动同步主上的创建事件的语句的话，会自动加上DISABLE ON SLAVE</span>
+
+    <span class="p">[</span><span class="k">COMMENT</span> <span class="s1">'comment'</span><span class="p">]</span>                 <span class="c1">-- 注释</span>
+
+    <span class="k">DO</span> <span class="n">event_body</span><span class="p">;</span>
+
+ 
+
+<span class="n">schedule</span><span class="p">:</span>
+
+    <span class="k">AT</span> <span class="k">timestamp</span> <span class="p">[</span><span class="o">+</span> <span class="n">INTERVAL</span> <span class="n">interval</span><span class="p">]</span> <span class="p">...</span>
+
+     <span class="o">|</span> <span class="k">EVERY</span> <span class="n">interval</span>
+
+    <span class="p">[</span><span class="n">STARTS</span> <span class="k">timestamp</span> <span class="p">[</span><span class="o">+</span> <span class="n">INTERVAL</span> <span class="n">interval</span><span class="p">]...]</span>
+
+    <span class="p">[</span><span class="n">ENDS</span> <span class="k">timestamp</span> <span class="p">[</span><span class="o">+</span> <span class="n">INTERVAL</span> <span class="n">interval</span><span class="p">]</span> <span class="p">...]</span>
+
+<span class="n">interval</span><span class="p">:</span>
+
+  <span class="n">quantity</span> <span class="err">{</span><span class="k">YEAR</span> <span class="o">|</span> <span class="n">QUARTER</span> <span class="o">|</span> <span class="k">MONTH</span> <span class="o">|</span> <span class="k">DAY</span> <span class="o">|</span> <span class="n">HOUR</span><span class="o">|</span> <span class="k">MINUTE</span> <span class="o">|</span>
+
+              <span class="n">WEEK</span> <span class="o">|</span> <span class="k">SECOND</span> <span class="o">|</span> <span class="n">YEAR_MONTH</span> <span class="o">|</span><span class="n">DAY_HOUR</span> <span class="o">|</span>
+
+              <span class="n">DAY_MINUTE</span> <span class="o">|</span><span class="n">DAY_SECOND</span><span class="o">|</span> <span class="n">HOUR_MINUTE</span> <span class="o">|</span>
+
+              <span class="n">HOUR_SECOND</span><span class="o">|</span> <span class="n">MINUTE_SECOND</span><span class="err">}</span></code></pre></figure>
+
+<p>删除：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DROP EVENT [IF EXISTS] event_name
+</code></pre></div></div>
+
+<p>修改</p>
+
+<figure class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">ALTER</span>
+
+    <span class="p">[</span><span class="k">DEFINER</span> <span class="o">=</span> <span class="err">{</span> <span class="k">user</span> <span class="o">|</span> <span class="k">CURRENT_USER</span> <span class="err">}</span><span class="p">]</span>
+
+    <span class="n">EVENT</span> <span class="n">event_name</span>
+
+    <span class="p">[</span><span class="k">ON</span> <span class="n">SCHEDULE</span> <span class="n">schedule</span><span class="p">]</span>
+
+    <span class="p">[</span><span class="k">ON</span> <span class="k">COMPLETION</span> <span class="p">[</span><span class="k">NOT</span><span class="p">]</span> <span class="k">PRESERVE</span><span class="p">]</span>
+
+    <span class="p">[</span><span class="k">RENAME</span> <span class="k">TO</span> <span class="n">new_event_name</span><span class="p">]</span>
+
+    <span class="p">[</span><span class="n">ENABLE</span> <span class="o">|</span> <span class="n">DISABLE</span> <span class="o">|</span> <span class="n">DISABLE</span> <span class="k">ON</span> <span class="n">SLAVE</span><span class="p">]</span>
+
+    <span class="p">[</span><span class="k">COMMENT</span> <span class="s1">'comment'</span><span class="p">]</span>
+
+    <span class="p">[</span><span class="k">DO</span> <span class="n">event_body</span><span class="p">]</span></code></pre></figure>
+
+<p>查看事件是否开启</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SHOW VARIABLES LIKE 'event_scheduler';
+SELECT @@event_scheduler;
+SHOW PROCESSLIST;
+//如果看到event_scheduler为on或者PROCESSLIST中显示有event_scheduler的信息说明就已经开启了事件
+</code></pre></div></div>
+<p>开启事件：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SET GLOBAL event_scheduler = ON;    // 立即开启，更改完这个参数就立刻生效了
+
+// 长期开启。在my.ini中的[mysqld]部分添加如下内容，然后重启mysql。
+event_scheduler=ON
+</code></pre></div></div>
+
+<h3 id="25-视图">2.5 视图</h3>
+<p>创建：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE [OR REPLACE] [ALGORITHM = {UNDEFINED | MERGE | TEMPTABLE}]
+VIEW view_name [(列名列表)]
+AS 查询语句
+[WITH [CASCADED | LOCAL] CHECK OPTION]
+</code></pre></div></div>
+<p>修改：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ALTER [ALGORITHM = {UNDEFINED | MERGE | TEMPTABLE}]
+VIEW view_name [(column_list)]
+AS select_statement
+[WITH [CASCADED | LOCAL] CHECK OPTION]
+</code></pre></div></div>
+<p>删除：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DROP VIEW [IF EXISTS]
+view_name [, view_name] ...
+[RESTRICT | CASCADE]
+</code></pre></div></div>
+
+  </div><a class="u-url" href="/document/2019/06/05/MySQL-function.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Diego&#39;s</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Diego&#39;s</li><li><a class="u-email" href="mailto:673500084@qq.com">673500084@qq.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/oucliuya"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">oucliuya</span></a></li><li><a href="https://www.twitter.com/Diego618"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">Diego618</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>此心安处是吾乡.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

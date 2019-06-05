@@ -1,47 +1,195 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-06-04T18:40:00+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Diego’s</title><subtitle>此心安处是吾乡.</subtitle><entry><title type="html">anaconda 环境配置</title><link href="http://localhost:4000/document/2019/05/29/anaconda.html" rel="alternate" type="text/html" title="anaconda 环境配置" /><published>2019-05-29T10:08:00+08:00</published><updated>2019-05-29T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/05/29/anaconda</id><content type="html" xml:base="http://localhost:4000/document/2019/05/29/anaconda.html">&lt;h3 id=&quot;安装python27&quot;&gt;安装python2.7&lt;/h3&gt;
-&lt;p&gt;0、安装conda并给conda设置镜像源
-下载地址：&lt;a href=&quot;https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/&quot;&gt;清华的anaconda镜像&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
-conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
-conda config --set show_channel_urls yes
-conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-06-05T11:17:40+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Diego’s</title><subtitle>此心安处是吾乡.</subtitle><entry><title type="html">MySQL的函数、存储过程、触发器、事件、视图</title><link href="http://localhost:4000/document/2019/06/05/MySQL-function.html" rel="alternate" type="text/html" title="MySQL的函数、存储过程、触发器、事件、视图" /><published>2019-06-05T10:38:00+08:00</published><updated>2019-06-05T10:38:00+08:00</updated><id>http://localhost:4000/document/2019/06/05/MySQL-function</id><content type="html" xml:base="http://localhost:4000/document/2019/06/05/MySQL-function.html">&lt;h2 id=&quot;1-定义&quot;&gt;1 定义&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;函数（function）: 如&lt;code class=&quot;highlighter-rouge&quot;&gt;count()&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;max()&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;min()&lt;/code&gt; 等是系统函数，也可以用自己创建function&lt;/li&gt;
+  &lt;li&gt;存储过程（procedure）: 一组为了完成特定功能的SQL 语句集，存储在数据库中，经过第一次编译后再次调用不需要再次编译，比一个个执行sql语句效率高。&lt;/li&gt;
+  &lt;li&gt;触发器（trigger）&lt;/li&gt;
+  &lt;li&gt;事件（event）事件调度器是MySQL5.1后新增的功能，可以将数据库按自定义的时间周期触发某种操作，可以理解为时间触发器，类似于linux系统下面的任务调度器crontab&lt;/li&gt;
+  &lt;li&gt;视图（view）视图是一个虚拟表，其内容由查询定义。 使用它主要出于两种原因：1. 安全原因， 视图可以隐藏一些数据，如：社会保险基金表，可以用视图只显示姓名，地址，而不显示社会保险号和工资数等，2. 另一原因是可使复杂的查询易于理解和使用&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;2-操作&quot;&gt;2 操作&lt;/h2&gt;
+
+&lt;h3 id=&quot;21-函数&quot;&gt;2.1 函数&lt;/h3&gt;
+&lt;p&gt;查看函数列表&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SHOW FUNCTION STATUS where db='指定库';
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;创建&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;CREATE FUNCTION 函数名称(参数列表)
+　　RETURNS 返回值类型
+　　函数体
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;修改&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ALTER FUNCTION 函数名称 [characteristic ...]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;删除&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;DROP FUNCTION [IF EXISTS] 函数名称
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;调用&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT 函数名称(参数列表)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;1、创建虚拟环境&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda create -n py2 python=2.7 // 创建虚拟环境
+&lt;h3 id=&quot;22-存储过程&quot;&gt;2.2 存储过程&lt;/h3&gt;
+&lt;p&gt;查看存储过程列表&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SHOW PROCEDURE STATUS where db='指定库';
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;2、激活虚拟环境&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;source activate py2     // 激活虚拟环境
+&lt;p&gt;创建&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;CREATE PROCEDURE 过程名 (参数列表) [characteristic ...]
+    函数体
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;3、退出虚拟环境&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;source deactiveate      // 退出虚拟环境
+&lt;p&gt;修改&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ALTER PROCEDURE  过程名 [characteristic ...]
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;4、删除虚拟环境&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda env remove -n env_name
+&lt;p&gt;删除&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;DROP PROCEDURE [IF EXISTS] 过程名
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;5、查看虚拟环境列表&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda env list
+&lt;p&gt;调用&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;CALL 过程名(参数列表)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;6、导出虚拟环境配置&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda env export &amp;gt; env.yaml
+&lt;h3 id=&quot;23-触发器&quot;&gt;2.3 触发器&lt;/h3&gt;
+&lt;p&gt;创建&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;CREATE TRIGGER &amp;lt;触发器名称&amp;gt;  --触发器必须有名字，最多64个字符，可能后面会附有分隔符.它和MySQL中其他对象的命名方式基本相象.
+{ BEFORE | AFTER }  --触发器有执行的时间设置：可以设置为事件发生前或后。
+{ INSERT | UPDATE | DELETE }  --同样也能设定触发的事件：它们可以在执行insert、update或delete的过程中触发。
+ON &amp;lt;表名称&amp;gt;  --触发器是属于某一个表的:当在这个表上执行插入、 更新或删除操作的时候就导致触发器的激活. 我们不能给同一张表的同一个事件安排两个触发器。
+FOR EACH ROW  --触发器的执行间隔：FOR EACH ROW子句通知触发器 每隔一行执行一次动作，而不是对整个表执行一次。
+&amp;lt;触发器SQL语句&amp;gt;  --触发器包含所要触发的SQL语句：这里的语句可以是任何合法的语句， 包括复合语句，但是这里的语句受的限制和函数的一样。
+--创建触发器（CREATE TRIGGER），需要SUPER权限。
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;7、使用配置文件搭建虚拟环境&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda env create -f env.yaml
+&lt;p&gt;eg:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TRIGGER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;testref&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BEFORE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;INSERT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;test1&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;FOR&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;EACH&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ROW&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BEGIN&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;INSERT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;INTO&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;test2&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;SET&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NEW&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;DELETE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;test3&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NEW&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;  
+    &lt;span class=&quot;k&quot;&gt;UPDATE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;test4&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;SET&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NEW&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;END&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;删除&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;DORP TRIGGER 方案名称.触发器名称
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;8、管理包&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// 下载包
-conda install package_name=version
-// 删除包
-conda remove package_name
-// 更新包
-conda update package_name
-// 列出所有包
-conda list
-// 查找包
-conda search package_name
-// 管理指定虚拟环境的包
-conda install package_name -n env_name
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="笔记" /><summary type="html">安装python2.7 0、安装conda并给conda设置镜像源 下载地址：清华的anaconda镜像 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/ conda config --set show_channel_urls yes conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/</summary></entry><entry><title type="html">MySQL的字符集</title><link href="http://localhost:4000/document/2019/05/29/MySQL-charset.html" rel="alternate" type="text/html" title="MySQL的字符集" /><published>2019-05-29T10:08:00+08:00</published><updated>2019-05-29T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/05/29/MySQL-charset</id><content type="html" xml:base="http://localhost:4000/document/2019/05/29/MySQL-charset.html">&lt;h2 id=&quot;1-utf8字符集问题&quot;&gt;1 utf8字符集问题&lt;/h2&gt;
+
+&lt;h3 id=&quot;24-事件&quot;&gt;2.4 事件&lt;/h3&gt;
+&lt;p&gt;创建&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt;
+
+    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;DEFINER&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;CURRENT_USER&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;--定义事件执行的时候检查权限的用户。&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;EVENT&lt;/span&gt;
+
+    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IF&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;EXISTS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;event_name&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SCHEDULE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;schedule&lt;/span&gt;              &lt;span class=&quot;c1&quot;&gt;--定义执行的时间和时间间隔。&lt;/span&gt;
+
+    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;COMPLETION&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;PRESERVE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;--定义事件是一次执行还是永久执行，默认为一次执行，即NOT PRESERVE。&lt;/span&gt;
+
+    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ENABLE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DISABLE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DISABLE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SLAVE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;--定义事件创建以后是开启还是关闭，以及在从上关闭。如果是从服务器自动同步主上的创建事件的语句的话，会自动加上DISABLE ON SLAVE&lt;/span&gt;
+
+    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;COMMENT&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'comment'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;                 &lt;span class=&quot;c1&quot;&gt;-- 注释&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;DO&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event_body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+ 
+
+&lt;span class=&quot;n&quot;&gt;schedule&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;AT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;timestamp&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INTERVAL&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;interval&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+
+     &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;EVERY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;interval&lt;/span&gt;
+
+    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;STARTS&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;timestamp&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INTERVAL&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;interval&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]...]&lt;/span&gt;
+
+    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ENDS&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;timestamp&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INTERVAL&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;interval&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...]&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;interval&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;quantity&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;YEAR&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;QUARTER&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;MONTH&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;DAY&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HOUR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;MINUTE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+
+              &lt;span class=&quot;n&quot;&gt;WEEK&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;SECOND&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;YEAR_MONTH&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DAY_HOUR&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+
+              &lt;span class=&quot;n&quot;&gt;DAY_MINUTE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DAY_SECOND&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HOUR_MINUTE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+
+              &lt;span class=&quot;n&quot;&gt;HOUR_SECOND&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MINUTE_SECOND&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;删除：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;DROP EVENT [IF EXISTS] event_name
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;修改&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;ALTER&lt;/span&gt;
+
+    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;DEFINER&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;CURRENT_USER&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;EVENT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event_name&lt;/span&gt;
+
+    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SCHEDULE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;schedule&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;COMPLETION&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;PRESERVE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;RENAME&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TO&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_event_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ENABLE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DISABLE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DISABLE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SLAVE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;COMMENT&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'comment'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;DO&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event_body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;查看事件是否开启&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SHOW VARIABLES LIKE 'event_scheduler';
+SELECT @@event_scheduler;
+SHOW PROCESSLIST;
+//如果看到event_scheduler为on或者PROCESSLIST中显示有event_scheduler的信息说明就已经开启了事件
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;开启事件：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SET GLOBAL event_scheduler = ON;    // 立即开启，更改完这个参数就立刻生效了
+
+// 长期开启。在my.ini中的[mysqld]部分添加如下内容，然后重启mysql。
+event_scheduler=ON
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;25-视图&quot;&gt;2.5 视图&lt;/h3&gt;
+&lt;p&gt;创建：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;CREATE [OR REPLACE] [ALGORITHM = {UNDEFINED | MERGE | TEMPTABLE}]
+VIEW view_name [(列名列表)]
+AS 查询语句
+[WITH [CASCADED | LOCAL] CHECK OPTION]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;修改：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ALTER [ALGORITHM = {UNDEFINED | MERGE | TEMPTABLE}]
+VIEW view_name [(column_list)]
+AS select_statement
+[WITH [CASCADED | LOCAL] CHECK OPTION]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;删除：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;DROP VIEW [IF EXISTS]
+view_name [, view_name] ...
+[RESTRICT | CASCADE]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="笔记" /><summary type="html">1 定义 函数（function）: 如count(), max(), min() 等是系统函数，也可以用自己创建function 存储过程（procedure）: 一组为了完成特定功能的SQL 语句集，存储在数据库中，经过第一次编译后再次调用不需要再次编译，比一个个执行sql语句效率高。 触发器（trigger） 事件（event）事件调度器是MySQL5.1后新增的功能，可以将数据库按自定义的时间周期触发某种操作，可以理解为时间触发器，类似于linux系统下面的任务调度器crontab 视图（view）视图是一个虚拟表，其内容由查询定义。 使用它主要出于两种原因：1. 安全原因， 视图可以隐藏一些数据，如：社会保险基金表，可以用视图只显示姓名，地址，而不显示社会保险号和工资数等，2. 另一原因是可使复杂的查询易于理解和使用</summary></entry><entry><title type="html">vim 操作备忘</title><link href="http://localhost:4000/document/2019/05/29/vim-editer.html" rel="alternate" type="text/html" title="vim 操作备忘" /><published>2019-05-29T10:08:00+08:00</published><updated>2019-05-29T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/05/29/vim-editer</id><content type="html" xml:base="http://localhost:4000/document/2019/05/29/vim-editer.html">&lt;h2 id=&quot;系统配置&quot;&gt;系统配置&lt;/h2&gt;
+&lt;p&gt;配置完成之后，tab自动变成4个空格&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot; add by school1024.com
+set ts=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set autoindent
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;旧文件的处理&quot;&gt;旧文件的处理&lt;/h2&gt;
+
+&lt;h3 id=&quot;tab-换成空格&quot;&gt;TAB 换成空格&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;:set ts=4
+:set expandtab
+:%retab!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;空格换成-tab&quot;&gt;空格换成 TAB&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;:set ts=4
+:set noexpandtab
+:%retab!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="笔记" /><summary type="html">系统配置 配置完成之后，tab自动变成4个空格 &quot; add by school1024.com set ts=4 set softtabstop=4 set shiftwidth=4 set expandtab set autoindent</summary></entry><entry><title type="html">MySQL的字符集</title><link href="http://localhost:4000/document/2019/05/29/MySQL-charset.html" rel="alternate" type="text/html" title="MySQL的字符集" /><published>2019-05-29T10:08:00+08:00</published><updated>2019-05-29T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/05/29/MySQL-charset</id><content type="html" xml:base="http://localhost:4000/document/2019/05/29/MySQL-charset.html">&lt;h2 id=&quot;1-utf8字符集问题&quot;&gt;1 utf8字符集问题&lt;/h2&gt;
 &lt;h3 id=&quot;11-简介&quot;&gt;1.1 简介&lt;/h3&gt;
 &lt;p&gt;mysql 5.5.3增加了utf8mb4（utf8 more byte 4），专门用来支持四字节的unicode（utf8字符集每个字符最多使用三个字节）。 utf8mb4 编码是 utf8编码的超集，所以把utf8改成utf8mb4不需要做其他转换。&lt;/p&gt;
 
@@ -322,29 +470,7 @@ flush privileges;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql [database name] &amp;lt; [backup file name]
 //或者进入mysql命令行，然后
 source [backup file name]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="教程" /><summary type="html">用户与权限类 1、 用root登录 cd ~/mysql&amp;amp;&amp;amp;./bin/mysql --defaults-file=etc/user.root.cnf 2、 查看mysql中所有的账号</summary></entry><entry><title type="html">vim 操作备忘</title><link href="http://localhost:4000/document/2019/05/29/vim-editer.html" rel="alternate" type="text/html" title="vim 操作备忘" /><published>2019-05-29T10:08:00+08:00</published><updated>2019-05-29T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/05/29/vim-editer</id><content type="html" xml:base="http://localhost:4000/document/2019/05/29/vim-editer.html">&lt;h2 id=&quot;系统配置&quot;&gt;系统配置&lt;/h2&gt;
-&lt;p&gt;配置完成之后，tab自动变成4个空格&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot; add by school1024.com
-set ts=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
-set autoindent
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;旧文件的处理&quot;&gt;旧文件的处理&lt;/h2&gt;
-
-&lt;h3 id=&quot;tab-换成空格&quot;&gt;TAB 换成空格&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;:set ts=4
-:set expandtab
-:%retab!
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;空格换成-tab&quot;&gt;空格换成 TAB&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;:set ts=4
-:set noexpandtab
-:%retab!
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="笔记" /><summary type="html">系统配置 配置完成之后，tab自动变成4个空格 &quot; add by school1024.com set ts=4 set softtabstop=4 set shiftwidth=4 set expandtab set autoindent</summary></entry><entry><title type="html">MySQL的存储引擎</title><link href="http://localhost:4000/document/2019/05/29/MySQL-engine.html" rel="alternate" type="text/html" title="MySQL的存储引擎" /><published>2019-05-29T10:08:00+08:00</published><updated>2019-05-29T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/05/29/MySQL-engine</id><content type="html" xml:base="http://localhost:4000/document/2019/05/29/MySQL-engine.html">&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/wjtlht928/article/details/46641865&quot;&gt;参考&lt;/a&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="教程" /><summary type="html">用户与权限类 1、 用root登录 cd ~/mysql&amp;amp;&amp;amp;./bin/mysql --defaults-file=etc/user.root.cnf 2、 查看mysql中所有的账号</summary></entry><entry><title type="html">MySQL的存储引擎</title><link href="http://localhost:4000/document/2019/05/29/MySQL-engine.html" rel="alternate" type="text/html" title="MySQL的存储引擎" /><published>2019-05-29T10:08:00+08:00</published><updated>2019-05-29T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/05/29/MySQL-engine</id><content type="html" xml:base="http://localhost:4000/document/2019/05/29/MySQL-engine.html">&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/wjtlht928/article/details/46641865&quot;&gt;参考&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;操作&quot;&gt;操作&lt;/h2&gt;
 &lt;h3 id=&quot;展示存储引擎&quot;&gt;展示存储引擎&lt;/h3&gt;
 &lt;ol&gt;
@@ -415,7 +541,50 @@ set autoindent
   &lt;li&gt;windows 客户端&lt;/li&gt;
   &lt;li&gt;android 客户端&lt;/li&gt;
   &lt;li&gt;小米手机系统原因可能导致ss无法使用，重启手机可能连上。&lt;/li&gt;
-&lt;/ol&gt;</content><author><name></name></author><category term="笔记" /><summary type="html">步骤 使用带visa的信用卡开通谷歌cloud账号 创建一个vm， 选择debian gnu、linux 8(jessie) 允许http https traffic 测试该vm的ip的速度，测试网站ipip.net。实用工具 TraceRoute 选择最近的服务商。测试路由时间，小于100ms为佳。 若延迟太大，则删除实例重新建实例。 ssh登录vm， 切换root用户 sudo -i root账户安装 bbr（一种tcp加速器） wget -N --no-check-certificate https://raw.githubusercontent.com/FunctionClub/YankeeBBR/master/bbr.sh &amp;amp;&amp;amp; bash bbr.sh install 交互窗口选NO，选择重启 重启后再次用ssh连接虚机，切换root用户 sudo -i root账户启动bbr.sh</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2019/05/29/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2019-05-29T09:45:54+08:00</published><updated>2019-05-29T09:45:54+08:00</updated><id>http://localhost:4000/jekyll/update/2019/05/29/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2019/05/29/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+&lt;/ol&gt;</content><author><name></name></author><category term="笔记" /><summary type="html">步骤 使用带visa的信用卡开通谷歌cloud账号 创建一个vm， 选择debian gnu、linux 8(jessie) 允许http https traffic 测试该vm的ip的速度，测试网站ipip.net。实用工具 TraceRoute 选择最近的服务商。测试路由时间，小于100ms为佳。 若延迟太大，则删除实例重新建实例。 ssh登录vm， 切换root用户 sudo -i root账户安装 bbr（一种tcp加速器） wget -N --no-check-certificate https://raw.githubusercontent.com/FunctionClub/YankeeBBR/master/bbr.sh &amp;amp;&amp;amp; bash bbr.sh install 交互窗口选NO，选择重启 重启后再次用ssh连接虚机，切换root用户 sudo -i root账户启动bbr.sh</summary></entry><entry><title type="html">anaconda 环境配置</title><link href="http://localhost:4000/document/2019/05/29/anaconda.html" rel="alternate" type="text/html" title="anaconda 环境配置" /><published>2019-05-29T10:08:00+08:00</published><updated>2019-05-29T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/05/29/anaconda</id><content type="html" xml:base="http://localhost:4000/document/2019/05/29/anaconda.html">&lt;h3 id=&quot;安装python27&quot;&gt;安装python2.7&lt;/h3&gt;
+&lt;p&gt;0、安装conda并给conda设置镜像源
+下载地址：&lt;a href=&quot;https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/&quot;&gt;清华的anaconda镜像&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+conda config --set show_channel_urls yes
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;1、创建虚拟环境&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda create -n py2 python=2.7 // 创建虚拟环境
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;2、激活虚拟环境&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;source activate py2     // 激活虚拟环境
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;3、退出虚拟环境&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;source deactiveate      // 退出虚拟环境
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;4、删除虚拟环境&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda env remove -n env_name
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;5、查看虚拟环境列表&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda env list
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;6、导出虚拟环境配置&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda env export &amp;gt; env.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;7、使用配置文件搭建虚拟环境&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda env create -f env.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;8、管理包&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// 下载包
+conda install package_name=version
+// 删除包
+conda remove package_name
+// 更新包
+conda update package_name
+// 列出所有包
+conda list
+// 查找包
+conda search package_name
+// 管理指定虚拟环境的包
+conda install package_name -n env_name
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="笔记" /><summary type="html">安装python2.7 0、安装conda并给conda设置镜像源 下载地址：清华的anaconda镜像 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/ conda config --set show_channel_urls yes conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2019/05/29/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2019-05-29T09:45:54+08:00</published><updated>2019-05-29T09:45:54+08:00</updated><id>http://localhost:4000/jekyll/update/2019/05/29/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2019/05/29/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
 
 &lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
 
