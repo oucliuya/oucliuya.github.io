@@ -92,3 +92,15 @@ mysql [database name] < [backup file name]
 //或者进入mysql命令行，然后
 source [backup file name]
 ```
+
+## 连接管理
+1、查看连接
+```
+select * from information_schema.processlist;
+show processlist;
+```
+
+2、断开连接
+```
+kill id;
+```

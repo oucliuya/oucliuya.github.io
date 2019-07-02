@@ -117,6 +117,16 @@ flush privileges;
 source [backup file name]
 </code></pre></div></div>
 
+<h2 id="连接管理">连接管理</h2>
+<p>1、查看连接</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>select * from information_schema.processlist;
+show processlist;
+</code></pre></div></div>
+
+<p>2、断开连接</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kill id;
+</code></pre></div></div>
+
   </div><a class="u-url" href="/document/2019/05/29/MySQL-admin.html" hidden></a>
 </article>
 
