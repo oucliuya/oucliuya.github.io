@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>leetcode 做题笔记 | Diego’s</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="leetcode 做题笔记" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Array" />
+<meta property="og:description" content="Array" />
+<link rel="canonical" href="http://localhost:4000/document/2019/07/10/leetcode-notes.html" />
+<meta property="og:url" content="http://localhost:4000/document/2019/07/10/leetcode-notes.html" />
+<meta property="og:site_name" content="Diego’s" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-07-10T10:08:00+08:00" />
+<script type="application/ld+json">
+{"description":"Array","@type":"BlogPosting","url":"http://localhost:4000/document/2019/07/10/leetcode-notes.html","headline":"leetcode 做题笔记","dateModified":"2019-07-10T10:08:00+08:00","datePublished":"2019-07-10T10:08:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/document/2019/07/10/leetcode-notes.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Diego's" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Diego&#39;s</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">leetcode 做题笔记</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2019-07-10T10:08:00+08:00" itemprop="datePublished">Jul 10, 2019
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h2 id="array">Array</h2>
+
+<p>In a 2 dimensional array grid, each value grid[i][j] represents 
+the height of a building located there. We are allowed to increase 
+the height of any number of buildings, by any amount (the amounts can 
+be different for different buildings). Height 0 is considered to be a 
+building as well. At the end, the “skyline” when viewed from all four 
+directions of the grid, i.e. top, bottom, left, and right, must be the 
+same as the skyline of the original grid. A city’s skyline is the outer 
+contour of the rectangles formed by all the buildings when viewed from a 
+distance. See the following example.</p>
+
+<p>What is the maximum total sum that the height of the buildings can be increased?</p>
+
+<p>Example:
+Input: grid = [[3,0,8,4],[2,4,5,7],[9,2,6,3],[0,3,1,0]]
+Output: 35
+Explanation: 
+The grid is:
+[ [3, 0, 8, 4], 
+  [2, 4, 5, 7],
+  [9, 2, 6, 3],
+  [0, 3, 1, 0] ]</p>
+
+<p>The skyline viewed from top or bottom is: [9, 4, 8, 7]
+The skyline viewed from left or right is: [8, 7, 9, 3]</p>
+
+<p>The grid after increasing the height of buildings without affecting skylines is:</p>
+
+<p>gridNew = [ [8, 4, 8, 7],
+        [7, 4, 7, 7],
+        [9, 4, 8, 7],
+        [3, 3, 3, 3] ]</p>
+
+<p>Notes:</p>
+
+<p>1 &lt; grid.length = grid[0].length &lt;= 50.</p>
+
+<p>All heights grid[i][j] are in the range [0, 100].</p>
+
+<p>All buildings in grid[i][j] occupy the entire grid cell: that is, they are a 1 x 1 x grid[i][j] rectangular prism.</p>
+
+<p>解答：</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">maxIncreaseKeepingSkyline</span><span class="o">(</span><span class="kt">int</span><span class="o">[][]</span> <span class="n">grid</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">M</span> <span class="o">=</span> <span class="n">grid</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">length</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+		<span class="kt">int</span><span class="o">[]</span> <span class="n">v_max</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">M</span><span class="o">];</span>
+		<span class="kt">int</span><span class="o">[]</span> <span class="n">h_max</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">N</span><span class="o">];</span>
+		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">M</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span>
+			<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
+			<span class="o">{</span>
+				<span class="n">v_max</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="n">v_max</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">grid</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">])</span> <span class="o">?</span> <span class="n">grid</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">:</span> <span class="n">v_max</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
+			<span class="o">}</span>
+		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
+			<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">M</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span>
+			<span class="o">{</span>
+				<span class="n">h_max</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="n">h_max</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">grid</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">])</span> <span class="o">?</span> <span class="n">grid</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">:</span> <span class="n">h_max</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+			<span class="o">}</span>
+		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
+			<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">M</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span>
+			<span class="o">{</span>
+				<span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="o">(</span><span class="n">h_max</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">v_max</span><span class="o">[</span><span class="n">j</span><span class="o">])</span> <span class="o">?</span> <span class="n">h_max</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">:</span> <span class="n">v_max</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
+				<span class="n">res</span> <span class="o">+=</span> <span class="n">max</span> <span class="o">-</span> <span class="n">grid</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">];</span>
+			<span class="o">}</span>
+		<span class="k">return</span> <span class="n">res</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<h2 id="subsets">Subsets</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Given a set of distinct integers, S, return all possible subsets.
+Note: Elements in a subset must be in non-descending order. The 
+solution set must not contain duplicate subsets. For example, 
+If S = [1,2,3], a solution is:
+
+[
+[3],
+[1],
+[2], [1,2,3], [1,3], [2,3], [1,2], []
+]
+
+</code></pre></div></div>
+<h3 id="解法一-使用递归">解法一： 使用递归</h3>
+
+  </div><a class="u-url" href="/document/2019/07/10/leetcode-notes.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Diego&#39;s</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Diego&#39;s</li><li><a class="u-email" href="mailto:673500084@qq.com">673500084@qq.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/oucliuya"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">oucliuya</span></a></li><li><a href="https://www.twitter.com/Diego618"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">Diego618</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>此心安处是吾乡.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

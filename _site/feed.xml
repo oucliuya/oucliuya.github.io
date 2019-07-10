@@ -1,4 +1,88 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-02T09:19:44+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Diego’s</title><subtitle>此心安处是吾乡.</subtitle><entry><title type="html">如何使用Jekyll!</title><link href="http://localhost:4000/jekyll/update/2019/06/12/how-to-use-jekyll.html" rel="alternate" type="text/html" title="如何使用Jekyll!" /><published>2019-06-12T09:45:54+08:00</published><updated>2019-06-12T09:45:54+08:00</updated><id>http://localhost:4000/jekyll/update/2019/06/12/how-to-use-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2019/06/12/how-to-use-jekyll.html">&lt;h2 id=&quot;环境&quot;&gt;环境&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-10T16:35:21+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Diego’s</title><subtitle>此心安处是吾乡.</subtitle><entry><title type="html">leetcode 做题笔记</title><link href="http://localhost:4000/document/2019/07/10/leetcode-notes.html" rel="alternate" type="text/html" title="leetcode 做题笔记" /><published>2019-07-10T10:08:00+08:00</published><updated>2019-07-10T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/07/10/leetcode-notes</id><content type="html" xml:base="http://localhost:4000/document/2019/07/10/leetcode-notes.html">&lt;h2 id=&quot;array&quot;&gt;Array&lt;/h2&gt;
+
+&lt;p&gt;In a 2 dimensional array grid, each value grid[i][j] represents 
+the height of a building located there. We are allowed to increase 
+the height of any number of buildings, by any amount (the amounts can 
+be different for different buildings). Height 0 is considered to be a 
+building as well. At the end, the “skyline” when viewed from all four 
+directions of the grid, i.e. top, bottom, left, and right, must be the 
+same as the skyline of the original grid. A city’s skyline is the outer 
+contour of the rectangles formed by all the buildings when viewed from a 
+distance. See the following example.&lt;/p&gt;
+
+&lt;p&gt;What is the maximum total sum that the height of the buildings can be increased?&lt;/p&gt;
+
+&lt;p&gt;Example:
+Input: grid = [[3,0,8,4],[2,4,5,7],[9,2,6,3],[0,3,1,0]]
+Output: 35
+Explanation: 
+The grid is:
+[ [3, 0, 8, 4], 
+  [2, 4, 5, 7],
+  [9, 2, 6, 3],
+  [0, 3, 1, 0] ]&lt;/p&gt;
+
+&lt;p&gt;The skyline viewed from top or bottom is: [9, 4, 8, 7]
+The skyline viewed from left or right is: [8, 7, 9, 3]&lt;/p&gt;
+
+&lt;p&gt;The grid after increasing the height of buildings without affecting skylines is:&lt;/p&gt;
+
+&lt;p&gt;gridNew = [ [8, 4, 8, 7],
+        [7, 4, 7, 7],
+        [9, 4, 8, 7],
+        [3, 3, 3, 3] ]&lt;/p&gt;
+
+&lt;p&gt;Notes:&lt;/p&gt;
+
+&lt;p&gt;1 &amp;lt; grid.length = grid[0].length &amp;lt;= 50.&lt;/p&gt;
+
+&lt;p&gt;All heights grid[i][j] are in the range [0, 100].&lt;/p&gt;
+
+&lt;p&gt;All buildings in grid[i][j] occupy the entire grid cell: that is, they are a 1 x 1 x grid[i][j] rectangular prism.&lt;/p&gt;
+
+&lt;p&gt;解答：&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;maxIncreaseKeepingSkyline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[][]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;grid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;grid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;M&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;grid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v_max&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;M&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
+		&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;h_max&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;M&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt;
+			&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+				&lt;span class=&quot;n&quot;&gt;v_max&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v_max&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;grid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;grid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v_max&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
+			&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;M&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt;
+			&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+				&lt;span class=&quot;n&quot;&gt;h_max&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h_max&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;grid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;grid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;h_max&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
+			&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;M&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt;
+			&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+				&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;max&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h_max&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v_max&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;h_max&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v_max&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
+				&lt;span class=&quot;n&quot;&gt;res&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;max&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;grid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
+			&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;subsets&quot;&gt;Subsets&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Given a set of distinct integers, S, return all possible subsets.
+Note: Elements in a subset must be in non-descending order. The 
+solution set must not contain duplicate subsets. For example, 
+If S = [1,2,3], a solution is:
+
+[
+[3],
+[1],
+[2], [1,2,3], [1,3], [2,3], [1,2], []
+]
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;解法一-使用递归&quot;&gt;解法一： 使用递归&lt;/h3&gt;</content><author><name></name></author><category term="笔记" /><summary type="html">Array</summary></entry><entry><title type="html">如何使用Jekyll!</title><link href="http://localhost:4000/jekyll/update/2019/06/12/how-to-use-jekyll.html" rel="alternate" type="text/html" title="如何使用Jekyll!" /><published>2019-06-12T09:45:54+08:00</published><updated>2019-06-12T09:45:54+08:00</updated><id>http://localhost:4000/jekyll/update/2019/06/12/how-to-use-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2019/06/12/how-to-use-jekyll.html">&lt;h2 id=&quot;环境&quot;&gt;环境&lt;/h2&gt;
 &lt;p&gt;首先jekyll需要ruby环境，需要安装&lt;/p&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install bundler jekyll
 jekyll new my-awesome-site
@@ -185,7 +269,72 @@ view_name [, view_name] ...
 &lt;h2 id=&quot;参考&quot;&gt;参考&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://dev.mysql.com/doc/refman/8.0/en/create-procedure.html&quot;&gt;MySQL官方文档-创建procedure&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="笔记" /><summary type="html">1 定义 函数（function）: 如count(), max(), min() 等是系统函数，也可以用自己创建function 存储过程（procedure）: 一组为了完成特定功能的SQL 语句集，存储在数据库中，经过第一次编译后再次调用不需要再次编译，比一个个执行sql语句效率高。 触发器（trigger） 事件（event）事件调度器是MySQL5.1后新增的功能，可以将数据库按自定义的时间周期触发某种操作，可以理解为时间触发器，类似于linux系统下面的任务调度器crontab 视图（view）视图是一个虚拟表，其内容由查询定义。 使用它主要出于两种原因：1. 安全原因， 视图可以隐藏一些数据，如：社会保险基金表，可以用视图只显示姓名，地址，而不显示社会保险号和工资数等，2. 另一原因是可使复杂的查询易于理解和使用</summary></entry><entry><title type="html">MySQL的binlog</title><link href="http://localhost:4000/document/2019/05/29/Bin-log.html" rel="alternate" type="text/html" title="MySQL的binlog" /><published>2019-05-29T10:08:00+08:00</published><updated>2019-05-29T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/05/29/Bin-log</id><content type="html" xml:base="http://localhost:4000/document/2019/05/29/Bin-log.html">&lt;h2 id=&quot;格式&quot;&gt;格式&lt;/h2&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="笔记" /><summary type="html">1 定义 函数（function）: 如count(), max(), min() 等是系统函数，也可以用自己创建function 存储过程（procedure）: 一组为了完成特定功能的SQL 语句集，存储在数据库中，经过第一次编译后再次调用不需要再次编译，比一个个执行sql语句效率高。 触发器（trigger） 事件（event）事件调度器是MySQL5.1后新增的功能，可以将数据库按自定义的时间周期触发某种操作，可以理解为时间触发器，类似于linux系统下面的任务调度器crontab 视图（view）视图是一个虚拟表，其内容由查询定义。 使用它主要出于两种原因：1. 安全原因， 视图可以隐藏一些数据，如：社会保险基金表，可以用视图只显示姓名，地址，而不显示社会保险号和工资数等，2. 另一原因是可使复杂的查询易于理解和使用</summary></entry><entry><title type="html">anaconda 环境配置</title><link href="http://localhost:4000/document/2019/05/29/anaconda.html" rel="alternate" type="text/html" title="anaconda 环境配置" /><published>2019-05-29T10:08:00+08:00</published><updated>2019-05-29T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/05/29/anaconda</id><content type="html" xml:base="http://localhost:4000/document/2019/05/29/anaconda.html">&lt;h3 id=&quot;安装python27&quot;&gt;安装python2.7&lt;/h3&gt;
+&lt;p&gt;0、安装conda并给conda设置镜像源
+下载地址：&lt;a href=&quot;https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/&quot;&gt;清华的anaconda镜像&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+conda config --set show_channel_urls yes
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;1、创建虚拟环境&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda create -n py2 python=2.7 // 创建虚拟环境
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;2、激活虚拟环境&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;source activate py2     // 激活虚拟环境
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;3、退出虚拟环境&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;source deactiveate      // 退出虚拟环境
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;4、删除虚拟环境&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda env remove -n env_name
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;5、查看虚拟环境列表&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda env list
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;6、导出虚拟环境配置&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda env export &amp;gt; env.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;7、使用配置文件搭建虚拟环境&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda env create -f env.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;8、管理包&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// 下载包
+conda install package_name=version
+// 删除包
+conda remove package_name
+// 更新包
+conda update package_name
+// 列出所有包
+conda list
+// 查找包
+conda search package_name
+// 管理指定虚拟环境的包
+conda install package_name -n env_name
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="笔记" /><summary type="html">安装python2.7 0、安装conda并给conda设置镜像源 下载地址：清华的anaconda镜像 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/ conda config --set show_channel_urls yes conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/</summary></entry><entry><title type="html">vim 操作备忘</title><link href="http://localhost:4000/document/2019/05/29/vim-editer.html" rel="alternate" type="text/html" title="vim 操作备忘" /><published>2019-05-29T10:08:00+08:00</published><updated>2019-05-29T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/05/29/vim-editer</id><content type="html" xml:base="http://localhost:4000/document/2019/05/29/vim-editer.html">&lt;h2 id=&quot;系统配置&quot;&gt;系统配置&lt;/h2&gt;
+&lt;p&gt;配置完成之后，tab自动变成4个空格&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot; add by school1024.com
+set ts=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set autoindent
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;旧文件的处理&quot;&gt;旧文件的处理&lt;/h2&gt;
+
+&lt;h3 id=&quot;tab-换成空格&quot;&gt;TAB 换成空格&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;:set ts=4
+:set expandtab
+:%retab!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;空格换成-tab&quot;&gt;空格换成 TAB&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;:set ts=4
+:set noexpandtab
+:%retab!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="笔记" /><summary type="html">系统配置 配置完成之后，tab自动变成4个空格 &quot; add by school1024.com set ts=4 set softtabstop=4 set shiftwidth=4 set expandtab set autoindent</summary></entry><entry><title type="html">MySQL的binlog</title><link href="http://localhost:4000/document/2019/05/29/Bin-log.html" rel="alternate" type="text/html" title="MySQL的binlog" /><published>2019-05-29T10:08:00+08:00</published><updated>2019-05-29T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/05/29/Bin-log</id><content type="html" xml:base="http://localhost:4000/document/2019/05/29/Bin-log.html">&lt;h2 id=&quot;格式&quot;&gt;格式&lt;/h2&gt;
 &lt;p&gt;binlog的格式一共有三种，分别是ROW、STATEMENT 和 MIXED&lt;/p&gt;
 
 &lt;h3 id=&quot;binlog-格式的识别&quot;&gt;binlog 格式的识别&lt;/h3&gt;
@@ -476,29 +625,7 @@ characterEncoding=utf8会被自动识别为utf8mb4，也可以不加这个参数
       &lt;td&gt;实际可以根据存入数据的类型转换字符集&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name></name></author><category term="笔记" /><summary type="html">1 utf8字符集问题 1.1 简介 mysql 5.5.3增加了utf8mb4（utf8 more byte 4），专门用来支持四字节的unicode（utf8字符集每个字符最多使用三个字节）。 utf8mb4 编码是 utf8编码的超集，所以把utf8改成utf8mb4不需要做其他转换。</summary></entry><entry><title type="html">vim 操作备忘</title><link href="http://localhost:4000/document/2019/05/29/vim-editer.html" rel="alternate" type="text/html" title="vim 操作备忘" /><published>2019-05-29T10:08:00+08:00</published><updated>2019-05-29T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/05/29/vim-editer</id><content type="html" xml:base="http://localhost:4000/document/2019/05/29/vim-editer.html">&lt;h2 id=&quot;系统配置&quot;&gt;系统配置&lt;/h2&gt;
-&lt;p&gt;配置完成之后，tab自动变成4个空格&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot; add by school1024.com
-set ts=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
-set autoindent
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;旧文件的处理&quot;&gt;旧文件的处理&lt;/h2&gt;
-
-&lt;h3 id=&quot;tab-换成空格&quot;&gt;TAB 换成空格&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;:set ts=4
-:set expandtab
-:%retab!
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;空格换成-tab&quot;&gt;空格换成 TAB&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;:set ts=4
-:set noexpandtab
-:%retab!
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="笔记" /><summary type="html">系统配置 配置完成之后，tab自动变成4个空格 &quot; add by school1024.com set ts=4 set softtabstop=4 set shiftwidth=4 set expandtab set autoindent</summary></entry><entry><title type="html">MySQL的存储引擎</title><link href="http://localhost:4000/document/2019/05/29/MySQL-engine.html" rel="alternate" type="text/html" title="MySQL的存储引擎" /><published>2019-05-29T10:08:00+08:00</published><updated>2019-05-29T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/05/29/MySQL-engine</id><content type="html" xml:base="http://localhost:4000/document/2019/05/29/MySQL-engine.html">&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/wjtlht928/article/details/46641865&quot;&gt;参考&lt;/a&gt;&lt;/p&gt;
+&lt;/table&gt;</content><author><name></name></author><category term="笔记" /><summary type="html">1 utf8字符集问题 1.1 简介 mysql 5.5.3增加了utf8mb4（utf8 more byte 4），专门用来支持四字节的unicode（utf8字符集每个字符最多使用三个字节）。 utf8mb4 编码是 utf8编码的超集，所以把utf8改成utf8mb4不需要做其他转换。</summary></entry><entry><title type="html">MySQL的存储引擎</title><link href="http://localhost:4000/document/2019/05/29/MySQL-engine.html" rel="alternate" type="text/html" title="MySQL的存储引擎" /><published>2019-05-29T10:08:00+08:00</published><updated>2019-05-29T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/05/29/MySQL-engine</id><content type="html" xml:base="http://localhost:4000/document/2019/05/29/MySQL-engine.html">&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/wjtlht928/article/details/46641865&quot;&gt;参考&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;操作&quot;&gt;操作&lt;/h2&gt;
 &lt;h3 id=&quot;展示存储引擎&quot;&gt;展示存储引擎&lt;/h3&gt;
 &lt;ol&gt;
@@ -524,92 +651,4 @@ set autoindent
 
 &lt;ol&gt;
   &lt;li&gt;count() 快，因为myisam存储了表的总行数&lt;/li&gt;
-&lt;/ol&gt;</content><author><name></name></author><category term="总结" /><summary type="html">参考 操作 展示存储引擎 show engines show variables like '%storage_engine%' show create table t1</summary></entry><entry><title type="html">科学上网 - google cloud</title><link href="http://localhost:4000/document/2019/05/29/SSR.html" rel="alternate" type="text/html" title="科学上网 - google cloud" /><published>2019-05-29T10:08:00+08:00</published><updated>2019-05-29T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/05/29/SSR</id><content type="html" xml:base="http://localhost:4000/document/2019/05/29/SSR.html">&lt;h3 id=&quot;步骤&quot;&gt;步骤&lt;/h3&gt;
-&lt;ol&gt;
-  &lt;li&gt;使用带visa的信用卡开通谷歌cloud账号&lt;/li&gt;
-  &lt;li&gt;创建一个vm， 选择debian gnu、linux 8(jessie) 允许http https traffic&lt;/li&gt;
-  &lt;li&gt;测试该vm的ip的速度，测试网站&lt;a href=&quot;https://www.ipip.net/&quot;&gt;ipip.net&lt;/a&gt;。实用工具 TraceRoute 选择最近的服务商。测试路由时间，小于100ms为佳。 若延迟太大，则删除实例重新建实例。&lt;/li&gt;
-  &lt;li&gt;ssh登录vm， 切换root用户   sudo -i&lt;/li&gt;
-  &lt;li&gt;root账户安装 bbr（一种tcp加速器）
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget -N --no-check-certificate https://raw.githubusercontent.com/FunctionClub/YankeeBBR/master/bbr.sh &amp;amp;&amp;amp; bash bbr.sh install
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;交互窗口选NO，选择重启&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;重启后再次用ssh连接虚机，切换root用户 sudo -i&lt;/li&gt;
-  &lt;li&gt;root账户启动bbr.sh&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bash bbr.sh start
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ol&gt;
-  &lt;li&gt;下载安装shadowsocksR并启动&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocksR.sh &amp;amp;&amp;amp; chmod +x shadowsocksR.sh
-./shadowsocksR.sh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;设定初始密码
-设定端口，设定加密方式，其他全默认&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;设置防火墙，进入vpc network &amp;gt; firewall rules,
-设置default-allow-hhtp  default-allow-hhtps的端口为 上一步所设端口&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;安装shadowsocks 客户端，添加已上 密码、host、port ，连接即可&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;tips&quot;&gt;tips&lt;/h3&gt;
-&lt;ol&gt;
-  &lt;li&gt;实例升级降级： 升级后后host ip会变，其他不变。无需手动过重启bbr或者shadowsocks&lt;/li&gt;
-  &lt;li&gt;mac 客户端&lt;/li&gt;
-  &lt;li&gt;ios 客户端&lt;/li&gt;
-  &lt;li&gt;windows 客户端&lt;/li&gt;
-  &lt;li&gt;android 客户端&lt;/li&gt;
-  &lt;li&gt;小米手机系统原因可能导致ss无法使用，重启手机可能连上。&lt;/li&gt;
-&lt;/ol&gt;</content><author><name></name></author><category term="笔记" /><summary type="html">步骤 使用带visa的信用卡开通谷歌cloud账号 创建一个vm， 选择debian gnu、linux 8(jessie) 允许http https traffic 测试该vm的ip的速度，测试网站ipip.net。实用工具 TraceRoute 选择最近的服务商。测试路由时间，小于100ms为佳。 若延迟太大，则删除实例重新建实例。 ssh登录vm， 切换root用户 sudo -i root账户安装 bbr（一种tcp加速器） wget -N --no-check-certificate https://raw.githubusercontent.com/FunctionClub/YankeeBBR/master/bbr.sh &amp;amp;&amp;amp; bash bbr.sh install 交互窗口选NO，选择重启 重启后再次用ssh连接虚机，切换root用户 sudo -i root账户启动bbr.sh</summary></entry><entry><title type="html">anaconda 环境配置</title><link href="http://localhost:4000/document/2019/05/29/anaconda.html" rel="alternate" type="text/html" title="anaconda 环境配置" /><published>2019-05-29T10:08:00+08:00</published><updated>2019-05-29T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/05/29/anaconda</id><content type="html" xml:base="http://localhost:4000/document/2019/05/29/anaconda.html">&lt;h3 id=&quot;安装python27&quot;&gt;安装python2.7&lt;/h3&gt;
-&lt;p&gt;0、安装conda并给conda设置镜像源
-下载地址：&lt;a href=&quot;https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/&quot;&gt;清华的anaconda镜像&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
-conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
-conda config --set show_channel_urls yes
-conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;1、创建虚拟环境&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda create -n py2 python=2.7 // 创建虚拟环境
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;2、激活虚拟环境&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;source activate py2     // 激活虚拟环境
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;3、退出虚拟环境&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;source deactiveate      // 退出虚拟环境
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;4、删除虚拟环境&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda env remove -n env_name
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;5、查看虚拟环境列表&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda env list
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;6、导出虚拟环境配置&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda env export &amp;gt; env.yaml
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;7、使用配置文件搭建虚拟环境&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda env create -f env.yaml
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;8、管理包&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// 下载包
-conda install package_name=version
-// 删除包
-conda remove package_name
-// 更新包
-conda update package_name
-// 列出所有包
-conda list
-// 查找包
-conda search package_name
-// 管理指定虚拟环境的包
-conda install package_name -n env_name
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="笔记" /><summary type="html">安装python2.7 0、安装conda并给conda设置镜像源 下载地址：清华的anaconda镜像 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/ conda config --set show_channel_urls yes conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/</summary></entry></feed>
+&lt;/ol&gt;</content><author><name></name></author><category term="总结" /><summary type="html">参考 操作 展示存储引擎 show engines show variables like '%storage_engine%' show create table t1</summary></entry></feed>
