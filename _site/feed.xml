@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-10T16:35:21+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Diego’s</title><subtitle>此心安处是吾乡.</subtitle><entry><title type="html">leetcode 做题笔记</title><link href="http://localhost:4000/document/2019/07/10/leetcode-notes.html" rel="alternate" type="text/html" title="leetcode 做题笔记" /><published>2019-07-10T10:08:00+08:00</published><updated>2019-07-10T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/07/10/leetcode-notes</id><content type="html" xml:base="http://localhost:4000/document/2019/07/10/leetcode-notes.html">&lt;h2 id=&quot;array&quot;&gt;Array&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-12T14:26:30+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Diego’s</title><subtitle>此心安处是吾乡.</subtitle><entry><title type="html">leetcode 做题笔记</title><link href="http://localhost:4000/document/2019/07/10/leetcode-notes.html" rel="alternate" type="text/html" title="leetcode 做题笔记" /><published>2019-07-10T10:08:00+08:00</published><updated>2019-07-10T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/07/10/leetcode-notes</id><content type="html" xml:base="http://localhost:4000/document/2019/07/10/leetcode-notes.html">&lt;h2 id=&quot;array&quot;&gt;Array&lt;/h2&gt;
 
 &lt;p&gt;In a 2 dimensional array grid, each value grid[i][j] represents 
 the height of a building located there. We are allowed to increase 
@@ -41,6 +41,13 @@ The skyline viewed from left or right is: [8, 7, 9, 3]&lt;/p&gt;
 &lt;p&gt;All buildings in grid[i][j] occupy the entire grid cell: that is, they are a 1 x 1 x grid[i][j] rectangular prism.&lt;/p&gt;
 
 &lt;p&gt;解答：&lt;/p&gt;
+
+&lt;p&gt;思路是：一共进行3次遍历，&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;第一次，获取竖直方向投影列表 v_max&lt;/li&gt;
+  &lt;li&gt;第二次，获取水平方向的投影列表 h_max;&lt;/li&gt;
+  &lt;li&gt;进行第三次遍历，矩阵中每一个元素的高度都可以增加到对应位置的竖直投影和水平投影中较小的一个。&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;maxIncreaseKeepingSkyline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[][]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;grid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
@@ -334,7 +341,190 @@ set autoindent
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;:set ts=4
 :set noexpandtab
 :%retab!
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="笔记" /><summary type="html">系统配置 配置完成之后，tab自动变成4个空格 &quot; add by school1024.com set ts=4 set softtabstop=4 set shiftwidth=4 set expandtab set autoindent</summary></entry><entry><title type="html">MySQL的binlog</title><link href="http://localhost:4000/document/2019/05/29/Bin-log.html" rel="alternate" type="text/html" title="MySQL的binlog" /><published>2019-05-29T10:08:00+08:00</published><updated>2019-05-29T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/05/29/Bin-log</id><content type="html" xml:base="http://localhost:4000/document/2019/05/29/Bin-log.html">&lt;h2 id=&quot;格式&quot;&gt;格式&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;vim-配置私藏&quot;&gt;vim 配置私藏&lt;/h3&gt;
+&lt;p&gt;修改 ~/.vimrc 文件：&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;syntax &lt;span class=&quot;nb&quot;&gt;enable
+&lt;/span&gt;syntax on
+&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;nocompatible
+colorscheme molokai &lt;span class=&quot;s2&quot;&gt;&quot;需要下载molokai color scheme，看过最舒服的vim配色，谁用谁知道，地址https://github.com/tomasr/molokai
+let g:rehash256 = 1
+set t_Co=256
+set backspace=2
+set cindent
+set cursorline
+set cursorcolumn
+set autoindent
+set smartindent
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set showmatch
+set incsearch
+set hlsearch
+set ignorecase
+set smartcase
+set number
+set ruler
+set encoding=utf-8
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1 &quot;&lt;/span&gt;编码匹配默认优先级顺序
+&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;undofile
+&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;undodir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;~/.vimundodir&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;vim-配置2&quot;&gt;vim 配置2&lt;/h2&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;mapleader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;;&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;fileencodings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;encoding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;utf-8
+&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;termencoding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;utf-8
+colorscheme default  
+&lt;span class=&quot;s2&quot;&gt;&quot; 开启文件类型侦测
+filetype on
+&quot;&lt;/span&gt; 根据侦测到的不同类型加载对应的插件
+filetype plugin on
+&lt;span class=&quot;s2&quot;&gt;&quot; 定义快捷键到行首和行尾
+nmap LB 0
+&quot;&lt;/span&gt; 开启实时搜索功能
+&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;incsearch
+&lt;span class=&quot;s2&quot;&gt;&quot; 搜索时大小写不敏感
+set ignorecase
+&quot;&lt;/span&gt; 关闭兼容模式
+&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;nocompatible
+&lt;span class=&quot;s2&quot;&gt;&quot; vim 自身命令行模式智能补全
+set wildmenu
+&quot;&lt;/span&gt; 禁止光标闪烁
+&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;gcr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;a:block-blinkon0
+&lt;span class=&quot;s2&quot;&gt;&quot; 总是显示状态栏
+set laststatus=2
+&quot;&lt;/span&gt; 开启行号显示
+&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;number
+&lt;span class=&quot;s2&quot;&gt;&quot; 高亮显示当前行/列
+set cursorline
+&quot;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;cursorcolumn
+&lt;span class=&quot;s2&quot;&gt;&quot; 高亮显示搜索结果
+set hlsearch
+&quot;&lt;/span&gt; 设置 gvim 显示字体
+&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;guifont&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;YaHei&lt;span class=&quot;se&quot;&gt;\ &lt;/span&gt;Consolas&lt;span class=&quot;se&quot;&gt;\ &lt;/span&gt;Hybrid&lt;span class=&quot;se&quot;&gt;\ &lt;/span&gt;11.5
+&lt;span class=&quot;s2&quot;&gt;&quot; 禁止折行
+&quot;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;nowrap
+&lt;span class=&quot;s2&quot;&gt;&quot; 设置状态栏主题风格
+let g:Powerline_colorscheme='solarized256'
+set nocompatible
+set laststatus=2
+set t_Co=256
+if ! has(&quot;&lt;/span&gt;gui_running&lt;span class=&quot;s2&quot;&gt;&quot;)
+    set t_Co=256
+endif
+if &amp;amp;diff
+&quot;&lt;/span&gt;    colors delek
+    colors blue
+endif
+&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;g:Powerline_symbols &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'fancy'&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;Powerline_symbols&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'compatible'&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;&quot; 开启语法高亮功能
+syntax enable
+&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot; 允许用指定语法高亮配色方案替换默认方案
+syntax on
+&quot;&lt;/span&gt; 自适应不同语言的智能缩进
+filetype indent on
+&lt;span class=&quot;s2&quot;&gt;&quot; &quot;&lt;/span&gt; 将制表符扩展为空格
+&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;expandtab
+&lt;span class=&quot;s2&quot;&gt;&quot; 设置编辑时制表符占用空格数
+set tabstop=4
+&quot;&lt;/span&gt; 设置格式化时制表符占用空格数
+&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;shiftwidth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;4
+&lt;span class=&quot;s2&quot;&gt;&quot; 让 vim 把连续数量的空格视为一个制表符
+set softtabstop=4
+&quot;&lt;/span&gt; 随 vim 自启动
+&lt;span class=&quot;s2&quot;&gt;&quot;let g:indent_guides_enable_on_vim_startup=1
+&quot;&lt;/span&gt; 从第二层开始可视化显示缩进
+&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;g:indent_guides_start_level&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2
+&lt;span class=&quot;s2&quot;&gt;&quot; 色块宽度
+let g:indent_guides_guide_size=1
+&quot;&lt;/span&gt; 快捷键 i 开/关缩进可视化
+:nmap &amp;lt;silent&amp;gt; &amp;lt;Leader&amp;gt;i &amp;lt;Plug&amp;gt;IndentGuidesToggle
+&lt;span class=&quot;s2&quot;&gt;&quot; 基于缩进或语法进行代码折叠
+set foldmethod=indent
+set foldmethod=syntax
+&quot;&lt;/span&gt; 启动 vim 时关闭折叠代码
+&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;nofoldenable
+&lt;span class=&quot;s2&quot;&gt;&quot; *.cpp 和 *.h 间切换
+nmap &amp;lt;Leader&amp;gt;ch :A&amp;lt;CR&amp;gt;
+&quot;&lt;/span&gt; 子窗口中显示 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.cpp 或 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.h
+nmap &amp;lt;Leader&amp;gt;sch :AS&amp;lt;CR&amp;gt;
+&lt;span class=&quot;s2&quot;&gt;&quot; 正向遍历同名标签
+nmap &amp;lt;Leader&amp;gt;tn :tnext&amp;lt;CR&amp;gt;
+&quot;&lt;/span&gt; 反向遍历同名标签
+nmap &amp;lt;Leader&amp;gt;tp :tprevious&amp;lt;CR&amp;gt;
+
+&lt;span class=&quot;s2&quot;&gt;&quot;NERDTree快捷键
+&quot;&lt;/span&gt;设置NERDTree子窗口宽度
+nnoremap &amp;lt;silent&amp;gt; fl :NERDTreeToggle&amp;lt;CR&amp;gt;
+&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;NERDTreeWinSize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;23
+&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;NERDTreeWinPos&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;left&quot;&lt;/span&gt;
+
+&lt;span class=&quot;s2&quot;&gt;&quot; 设置插件 indexer 调用 ctags 的参数
+&quot;&lt;/span&gt; 默认 &lt;span class=&quot;nt&quot;&gt;--c&lt;/span&gt;++-kinds&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;+p+l，重新设置为 &lt;span class=&quot;nt&quot;&gt;--c&lt;/span&gt;++-kinds&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;+p+l+x+c+d+e+f+g+m+n+s+t+u+v
+&lt;span class=&quot;s2&quot;&gt;&quot; 默认 --fields=+iaS 不满足 YCM 要求，需改为 --fields=+iaSl
+let g:indexer_ctagsCommandLineOptions=&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;--c&lt;/span&gt;++-kinds&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;+p+l+x+c+d+e+f+g+m+n+s+t+u+v &lt;span class=&quot;nt&quot;&gt;--fields&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;+iaSl &lt;span class=&quot;nt&quot;&gt;--extra&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;+q&lt;span class=&quot;s2&quot;&gt;&quot;
+&quot;&lt;/span&gt; 只能是 &lt;span class=&quot;c&quot;&gt;#include 或已打开的文件&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;&quot; 设置 tagbar 子窗口的位置出现在主编辑区的左边 
+&quot;&lt;/span&gt; 设置显示／隐藏标签列表子窗口的快捷键。速记：tag list 
+&lt;span class=&quot;s2&quot;&gt;&quot; 设置标签子窗口的宽度 
+&quot;&lt;/span&gt; tagbar 子窗口中不显示冗余帮助信息 
+&lt;span class=&quot;s2&quot;&gt;&quot; 设置 ctags 对哪些代码元素生成标签
+&quot;&lt;/span&gt;定义函数SetTitle，自动插入文件头
+
+&lt;span class=&quot;s2&quot;&gt;&quot; *.cpp 和 *.h 间切换
+nmap &amp;lt;silent&amp;gt; &amp;lt;Leader&amp;gt;sw :FSHere&amp;lt;cr&amp;gt;
+&quot;&lt;/span&gt;taglist窗口显示在右侧，缺省为左侧
+nnoremap &amp;lt;silent&amp;gt; tl :Tlist&amp;lt;CR&amp;gt;    &lt;span class=&quot;s2&quot;&gt;&quot;设置显示标签列表子窗口的快捷键
+let Tlist_Use_Right_Window=1
+let Tlist_Exit_OnlyWindow=1          &quot;&lt;/span&gt;如果taglist窗口是最后一个窗口，则退出vim
+&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;Tlist_Show_One_File&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1           &lt;span class=&quot;s2&quot;&gt;&quot;不同时显示多个文件的tag，只显示当前文件的
+let Tlist_WinWidth=20                 &quot;&lt;/span&gt;设置标签子窗口的宽度
+&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;OmniCpp_DefaultNamespaces&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;_GLIBCXX_STD&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;g:ycm_global_ycm_extra_conf&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'/home/mysql/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;g:ycm_seed_identifiers_with_syntax&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1
+&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tags&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;tags&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;autochdir
+
+&lt;span class=&quot;s2&quot;&gt;&quot;配置miniBufExpl配置
+&quot;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;g:miniBufExplorerMoreThanOne &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0
+&lt;span class=&quot;s2&quot;&gt;&quot;let g:miniBufExplorerMaxHeight=30
+&quot;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;g:miniBufExplorer_Exit_OnlyWindow &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 1          &lt;span class=&quot;s2&quot;&gt;&quot;如果taglist窗口是最后一个窗口，则退出vim
+&quot;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;g:miniBufExplMapCtabSwitchBufs &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 1
+&lt;span class=&quot;s2&quot;&gt;&quot;let g:ycm_collect_identifiers_from_tags_files=1   &quot;&lt;/span&gt; 开启 YCM
+
+&lt;span class=&quot;s2&quot;&gt;&quot; 基于标签引擎
+let g:ycm_min_num_of_chars_for_completion=2   &quot;&lt;/span&gt;   
+&lt;span class=&quot;s2&quot;&gt;&quot; 从第2个键入字符就开始罗列匹配项
+let g:ycm_cache_omnifunc=0    &quot;&lt;/span&gt;   
+&lt;span class=&quot;s2&quot;&gt;&quot; 禁止缓存匹配项,每次都重新生成匹配项
+let g:ycm_seed_identifiers_with_syntax=1  &quot;&lt;/span&gt; 语法关键字补全
+&lt;span class=&quot;s2&quot;&gt;&quot;nnoremap &amp;lt;F5&amp;gt; :YcmForceCompileAndDiagnostics&amp;lt;CR&amp;gt;  &quot;&lt;/span&gt;force recomile with
+&lt;span class=&quot;s2&quot;&gt;&quot; syntastic
+nnoremap &amp;lt;leader&amp;gt;lo :lopen&amp;lt;CR&amp;gt;   &quot;&lt;/span&gt;open locationlist
+nnoremap &amp;lt;leader&amp;gt;lc :lclose&amp;lt;CR&amp;gt;  &lt;span class=&quot;s2&quot;&gt;&quot;close locationlist
+inoremap &amp;lt;leader&amp;gt;&amp;lt;leader&amp;gt; &amp;lt;C-x&amp;gt;&amp;lt;C-o&amp;gt;
+&quot;&lt;/span&gt;在注释输入中也能补全
+&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;g:ycm_complete_in_comments &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 1 
+&lt;span class=&quot;s2&quot;&gt;&quot;在字符串输入中也能补全
+let g:ycm_complete_in_strings = 1 
+&quot;&lt;/span&gt;注释和字符串中的文字也会被收入补全
+&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;g:ycm_collect_identifiers_from_comments_and_strings &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 0 
+
+&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;g:airline#extensions#tabline#enabled &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 1
+&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;g:airline#extensions#tabline#buffer_nr_show &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 1
+nnoremap &amp;lt;C-N&amp;gt; :bn&amp;lt;CR&amp;gt;
+nnoremap &amp;lt;C-P&amp;gt; :bp&amp;lt;CR&amp;gt;
+
+&lt;span class=&quot;s2&quot;&gt;&quot;每行最长字节个数的竖线
+let colorcolumn=&quot;&lt;/span&gt;100&lt;span class=&quot;s2&quot;&gt;&quot;
+highlight CursorLine cterm=NONE ctermbg=blue ctermfg=NONE guibg=NONE guifg=NONE&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name></name></author><category term="笔记" /><summary type="html">系统配置 配置完成之后，tab自动变成4个空格 &quot; add by school1024.com set ts=4 set softtabstop=4 set shiftwidth=4 set expandtab set autoindent</summary></entry><entry><title type="html">MySQL的binlog</title><link href="http://localhost:4000/document/2019/05/29/Bin-log.html" rel="alternate" type="text/html" title="MySQL的binlog" /><published>2019-05-29T10:08:00+08:00</published><updated>2019-05-29T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/05/29/Bin-log</id><content type="html" xml:base="http://localhost:4000/document/2019/05/29/Bin-log.html">&lt;h2 id=&quot;格式&quot;&gt;格式&lt;/h2&gt;
 &lt;p&gt;binlog的格式一共有三种，分别是ROW、STATEMENT 和 MIXED&lt;/p&gt;
 
 &lt;h3 id=&quot;binlog-格式的识别&quot;&gt;binlog 格式的识别&lt;/h3&gt;

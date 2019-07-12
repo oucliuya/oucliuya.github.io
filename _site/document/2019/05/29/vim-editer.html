@@ -69,6 +69,189 @@ set autoindent
 :%retab!
 </code></pre></div></div>
 
+<h3 id="vim-配置私藏">vim 配置私藏</h3>
+<p>修改 ~/.vimrc 文件：</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">syntax <span class="nb">enable
+</span>syntax on
+<span class="nb">set </span>nocompatible
+colorscheme molokai <span class="s2">"需要下载molokai color scheme，看过最舒服的vim配色，谁用谁知道，地址https://github.com/tomasr/molokai
+let g:rehash256 = 1
+set t_Co=256
+set backspace=2
+set cindent
+set cursorline
+set cursorcolumn
+set autoindent
+set smartindent
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set showmatch
+set incsearch
+set hlsearch
+set ignorecase
+set smartcase
+set number
+set ruler
+set encoding=utf-8
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1 "</span>编码匹配默认优先级顺序
+<span class="nb">set </span>undofile
+<span class="nb">set </span><span class="nv">undodir</span><span class="o">=</span>~/.vimundodir</code></pre></figure>
+
+<h2 id="vim-配置2">vim 配置2</h2>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">let </span><span class="nv">mapleader</span><span class="o">=</span><span class="s2">";"</span>
+<span class="nb">set </span><span class="nv">fileencodings</span><span class="o">=</span>utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+<span class="nb">set </span><span class="nv">encoding</span><span class="o">=</span>utf-8
+<span class="nb">set </span><span class="nv">termencoding</span><span class="o">=</span>utf-8
+colorscheme default  
+<span class="s2">" 开启文件类型侦测
+filetype on
+"</span> 根据侦测到的不同类型加载对应的插件
+filetype plugin on
+<span class="s2">" 定义快捷键到行首和行尾
+nmap LB 0
+"</span> 开启实时搜索功能
+<span class="nb">set </span>incsearch
+<span class="s2">" 搜索时大小写不敏感
+set ignorecase
+"</span> 关闭兼容模式
+<span class="nb">set </span>nocompatible
+<span class="s2">" vim 自身命令行模式智能补全
+set wildmenu
+"</span> 禁止光标闪烁
+<span class="nb">set </span><span class="nv">gcr</span><span class="o">=</span>a:block-blinkon0
+<span class="s2">" 总是显示状态栏
+set laststatus=2
+"</span> 开启行号显示
+<span class="nb">set </span>number
+<span class="s2">" 高亮显示当前行/列
+set cursorline
+"</span><span class="nb">set </span>cursorcolumn
+<span class="s2">" 高亮显示搜索结果
+set hlsearch
+"</span> 设置 gvim 显示字体
+<span class="nb">set </span><span class="nv">guifont</span><span class="o">=</span>YaHei<span class="se">\ </span>Consolas<span class="se">\ </span>Hybrid<span class="se">\ </span>11.5
+<span class="s2">" 禁止折行
+"</span><span class="nb">set </span>nowrap
+<span class="s2">" 设置状态栏主题风格
+let g:Powerline_colorscheme='solarized256'
+set nocompatible
+set laststatus=2
+set t_Co=256
+if ! has("</span>gui_running<span class="s2">")
+    set t_Co=256
+endif
+if &amp;diff
+"</span>    colors delek
+    colors blue
+endif
+<span class="nb">let </span>g:Powerline_symbols <span class="o">=</span> <span class="s1">'fancy'</span>
+<span class="nb">let </span><span class="nv">Powerline_symbols</span><span class="o">=</span><span class="s1">'compatible'</span>
+<span class="s2">" 开启语法高亮功能
+syntax enable
+"</span> <span class="s2">" 允许用指定语法高亮配色方案替换默认方案
+syntax on
+"</span> 自适应不同语言的智能缩进
+filetype indent on
+<span class="s2">" "</span> 将制表符扩展为空格
+<span class="nb">set </span>expandtab
+<span class="s2">" 设置编辑时制表符占用空格数
+set tabstop=4
+"</span> 设置格式化时制表符占用空格数
+<span class="nb">set </span><span class="nv">shiftwidth</span><span class="o">=</span>4
+<span class="s2">" 让 vim 把连续数量的空格视为一个制表符
+set softtabstop=4
+"</span> 随 vim 自启动
+<span class="s2">"let g:indent_guides_enable_on_vim_startup=1
+"</span> 从第二层开始可视化显示缩进
+<span class="nb">let </span>g:indent_guides_start_level<span class="o">=</span>2
+<span class="s2">" 色块宽度
+let g:indent_guides_guide_size=1
+"</span> 快捷键 i 开/关缩进可视化
+:nmap &lt;silent&gt; &lt;Leader&gt;i &lt;Plug&gt;IndentGuidesToggle
+<span class="s2">" 基于缩进或语法进行代码折叠
+set foldmethod=indent
+set foldmethod=syntax
+"</span> 启动 vim 时关闭折叠代码
+<span class="nb">set </span>nofoldenable
+<span class="s2">" *.cpp 和 *.h 间切换
+nmap &lt;Leader&gt;ch :A&lt;CR&gt;
+"</span> 子窗口中显示 <span class="k">*</span>.cpp 或 <span class="k">*</span>.h
+nmap &lt;Leader&gt;sch :AS&lt;CR&gt;
+<span class="s2">" 正向遍历同名标签
+nmap &lt;Leader&gt;tn :tnext&lt;CR&gt;
+"</span> 反向遍历同名标签
+nmap &lt;Leader&gt;tp :tprevious&lt;CR&gt;
+
+<span class="s2">"NERDTree快捷键
+"</span>设置NERDTree子窗口宽度
+nnoremap &lt;silent&gt; fl :NERDTreeToggle&lt;CR&gt;
+<span class="nb">let </span><span class="nv">NERDTreeWinSize</span><span class="o">=</span>23
+<span class="nb">let </span><span class="nv">NERDTreeWinPos</span><span class="o">=</span><span class="s2">"left"</span>
+
+<span class="s2">" 设置插件 indexer 调用 ctags 的参数
+"</span> 默认 <span class="nt">--c</span>++-kinds<span class="o">=</span>+p+l，重新设置为 <span class="nt">--c</span>++-kinds<span class="o">=</span>+p+l+x+c+d+e+f+g+m+n+s+t+u+v
+<span class="s2">" 默认 --fields=+iaS 不满足 YCM 要求，需改为 --fields=+iaSl
+let g:indexer_ctagsCommandLineOptions="</span><span class="nt">--c</span>++-kinds<span class="o">=</span>+p+l+x+c+d+e+f+g+m+n+s+t+u+v <span class="nt">--fields</span><span class="o">=</span>+iaSl <span class="nt">--extra</span><span class="o">=</span>+q<span class="s2">"
+"</span> 只能是 <span class="c">#include 或已打开的文件</span>
+<span class="s2">" 设置 tagbar 子窗口的位置出现在主编辑区的左边 
+"</span> 设置显示／隐藏标签列表子窗口的快捷键。速记：tag list 
+<span class="s2">" 设置标签子窗口的宽度 
+"</span> tagbar 子窗口中不显示冗余帮助信息 
+<span class="s2">" 设置 ctags 对哪些代码元素生成标签
+"</span>定义函数SetTitle，自动插入文件头
+
+<span class="s2">" *.cpp 和 *.h 间切换
+nmap &lt;silent&gt; &lt;Leader&gt;sw :FSHere&lt;cr&gt;
+"</span>taglist窗口显示在右侧，缺省为左侧
+nnoremap &lt;silent&gt; tl :Tlist&lt;CR&gt;    <span class="s2">"设置显示标签列表子窗口的快捷键
+let Tlist_Use_Right_Window=1
+let Tlist_Exit_OnlyWindow=1          "</span>如果taglist窗口是最后一个窗口，则退出vim
+<span class="nb">let </span><span class="nv">Tlist_Show_One_File</span><span class="o">=</span>1           <span class="s2">"不同时显示多个文件的tag，只显示当前文件的
+let Tlist_WinWidth=20                 "</span>设置标签子窗口的宽度
+<span class="nb">let </span><span class="nv">OmniCpp_DefaultNamespaces</span><span class="o">=[</span><span class="s2">"_GLIBCXX_STD"</span><span class="o">]</span>
+<span class="nb">let </span>g:ycm_global_ycm_extra_conf<span class="o">=</span><span class="s1">'/home/mysql/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'</span>
+<span class="nb">let </span>g:ycm_seed_identifiers_with_syntax<span class="o">=</span>1
+<span class="nb">set </span><span class="nv">tags</span><span class="o">=</span>tags<span class="p">;</span>
+<span class="nb">set </span>autochdir
+
+<span class="s2">"配置miniBufExpl配置
+"</span><span class="nb">let </span>g:miniBufExplorerMoreThanOne <span class="o">=</span> 0
+<span class="s2">"let g:miniBufExplorerMaxHeight=30
+"</span><span class="nb">let </span>g:miniBufExplorer_Exit_OnlyWindow <span class="o">=</span> 1          <span class="s2">"如果taglist窗口是最后一个窗口，则退出vim
+"</span><span class="nb">let </span>g:miniBufExplMapCtabSwitchBufs <span class="o">=</span> 1
+<span class="s2">"let g:ycm_collect_identifiers_from_tags_files=1   "</span> 开启 YCM
+
+<span class="s2">" 基于标签引擎
+let g:ycm_min_num_of_chars_for_completion=2   "</span>   
+<span class="s2">" 从第2个键入字符就开始罗列匹配项
+let g:ycm_cache_omnifunc=0    "</span>   
+<span class="s2">" 禁止缓存匹配项,每次都重新生成匹配项
+let g:ycm_seed_identifiers_with_syntax=1  "</span> 语法关键字补全
+<span class="s2">"nnoremap &lt;F5&gt; :YcmForceCompileAndDiagnostics&lt;CR&gt;  "</span>force recomile with
+<span class="s2">" syntastic
+nnoremap &lt;leader&gt;lo :lopen&lt;CR&gt;   "</span>open locationlist
+nnoremap &lt;leader&gt;lc :lclose&lt;CR&gt;  <span class="s2">"close locationlist
+inoremap &lt;leader&gt;&lt;leader&gt; &lt;C-x&gt;&lt;C-o&gt;
+"</span>在注释输入中也能补全
+<span class="nb">let </span>g:ycm_complete_in_comments <span class="o">=</span> 1 
+<span class="s2">"在字符串输入中也能补全
+let g:ycm_complete_in_strings = 1 
+"</span>注释和字符串中的文字也会被收入补全
+<span class="nb">let </span>g:ycm_collect_identifiers_from_comments_and_strings <span class="o">=</span> 0 
+
+<span class="nb">let </span>g:airline#extensions#tabline#enabled <span class="o">=</span> 1
+<span class="nb">let </span>g:airline#extensions#tabline#buffer_nr_show <span class="o">=</span> 1
+nnoremap &lt;C-N&gt; :bn&lt;CR&gt;
+nnoremap &lt;C-P&gt; :bp&lt;CR&gt;
+
+<span class="s2">"每行最长字节个数的竖线
+let colorcolumn="</span>100<span class="s2">"
+highlight CursorLine cterm=NONE ctermbg=blue ctermfg=NONE guibg=NONE guifg=NONE</span></code></pre></figure>
+
   </div><a class="u-url" href="/document/2019/05/29/vim-editer.html" hidden></a>
 </article>
 

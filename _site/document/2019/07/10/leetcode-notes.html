@@ -89,6 +89,13 @@ The skyline viewed from left or right is: [8, 7, 9, 3]</p>
 
 <p>解答：</p>
 
+<p>思路是：一共进行3次遍历，</p>
+<ol>
+  <li>第一次，获取竖直方向投影列表 v_max</li>
+  <li>第二次，获取水平方向的投影列表 h_max;</li>
+  <li>进行第三次遍历，矩阵中每一个元素的高度都可以增加到对应位置的竖直投影和水平投影中较小的一个。</li>
+</ol>
+
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="kt">int</span> <span class="nf">maxIncreaseKeepingSkyline</span><span class="o">(</span><span class="kt">int</span><span class="o">[][]</span> <span class="n">grid</span><span class="o">)</span> <span class="o">{</span>
         <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>

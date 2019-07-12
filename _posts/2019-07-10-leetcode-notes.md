@@ -50,6 +50,12 @@ All heights grid[i][j] are in the range [0, 100].
 All buildings in grid[i][j] occupy the entire grid cell: that is, they are a 1 x 1 x grid[i][j] rectangular prism.
 
 解答：
+
+思路是：一共进行3次遍历，
+1. 第一次，获取竖直方向投影列表 v_max 
+2. 第二次，获取水平方向的投影列表 h_max; 
+3. 进行第三次遍历，矩阵中每一个元素的高度都可以增加到对应位置的竖直投影和水平投影中较小的一个。
+
 {% highlight java %}
 class Solution {
     public int maxIncreaseKeepingSkyline(int[][] grid) {
