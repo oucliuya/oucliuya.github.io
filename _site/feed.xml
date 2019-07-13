@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-12T14:26:30+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Diego’s</title><subtitle>此心安处是吾乡.</subtitle><entry><title type="html">leetcode 做题笔记</title><link href="http://localhost:4000/document/2019/07/10/leetcode-notes.html" rel="alternate" type="text/html" title="leetcode 做题笔记" /><published>2019-07-10T10:08:00+08:00</published><updated>2019-07-10T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/07/10/leetcode-notes</id><content type="html" xml:base="http://localhost:4000/document/2019/07/10/leetcode-notes.html">&lt;h2 id=&quot;array&quot;&gt;Array&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-12T16:11:28+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Diego’s</title><subtitle>此心安处是吾乡.</subtitle><entry><title type="html">leetcode 做题笔记</title><link href="http://localhost:4000/document/2019/07/10/leetcode-notes.html" rel="alternate" type="text/html" title="leetcode 做题笔记" /><published>2019-07-10T10:08:00+08:00</published><updated>2019-07-10T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/07/10/leetcode-notes</id><content type="html" xml:base="http://localhost:4000/document/2019/07/10/leetcode-notes.html">&lt;h2 id=&quot;array&quot;&gt;Array&lt;/h2&gt;
 
 &lt;p&gt;In a 2 dimensional array grid, each value grid[i][j] represents 
 the height of a building located there. We are allowed to increase 
@@ -539,6 +539,29 @@ binlog_format   = MIXED                 //binlog日志格式
 log_bin         =目录/mysql-bin.log      //binlog日志名
 expire_logs_days    = 7                 //binlog过期清理时间
 max_binlog_size    100m                 //binlog每个日志文件大小
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;binlog清理&quot;&gt;binlog清理&lt;/h3&gt;
+&lt;h4 id=&quot;方法一手动purge&quot;&gt;方法一：手动purge&lt;/h4&gt;
+
+&lt;p&gt;1 手动清理，首先要看主从再用哪个binlog
+show master status\G 
+show slave status\G&lt;/p&gt;
+
+&lt;p&gt;2 在删除binlog日志之前，首先对binlog日志备份，以防万一&lt;/p&gt;
+
+&lt;p&gt;3 purge&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;purge master logs before'2016-09-01 17:20:00'; //删除指定日期以前的日志索引
+purge master logs to'mysql-bin.000022'; //删除指定日志文件的日志索引中binlog日志文件
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id=&quot;方法二-通过设置binlog过期的时间使系统自动删除binlog文件&quot;&gt;方法二： 通过设置binlog过期的时间，使系统自动删除binlog文件&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;show variables like 'expire_logs_days';
+set global expire_logs_days = 30;    #设置binlog多少天过期
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;或者在配置文件里设置&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;expire_logs_days=25
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;常用操作&quot;&gt;常用操作&lt;/h2&gt;
