@@ -53,6 +53,12 @@
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>show variables like "binlog_format";
 </code></pre></div></div>
 <h3 id="切换格式">切换格式：</h3>
+<h4 id="1-在线切换">1. 在线切换</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>set global binlog_format=ROW; // 必须退出当前session并重连才会生效
+
+</code></pre></div></div>
+
+<h4 id="2-停服切换">2. 停服切换</h4>
 
 <p>要切换binlog格式，首先备份my.cnf, 然后修改binlog_format为想要的格式，最后重启mysql</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>my.cnf文件中

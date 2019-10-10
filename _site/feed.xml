@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-12T16:11:28+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Diego’s</title><subtitle>此心安处是吾乡.</subtitle><entry><title type="html">leetcode 做题笔记</title><link href="http://localhost:4000/document/2019/07/10/leetcode-notes.html" rel="alternate" type="text/html" title="leetcode 做题笔记" /><published>2019-07-10T10:08:00+08:00</published><updated>2019-07-10T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/07/10/leetcode-notes</id><content type="html" xml:base="http://localhost:4000/document/2019/07/10/leetcode-notes.html">&lt;h2 id=&quot;array&quot;&gt;Array&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-10-10T10:59:19+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Diego’s</title><subtitle>此心安处是吾乡.</subtitle><entry><title type="html">leetcode 做题笔记</title><link href="http://localhost:4000/document/2019/07/10/leetcode-notes.html" rel="alternate" type="text/html" title="leetcode 做题笔记" /><published>2019-07-10T10:08:00+08:00</published><updated>2019-07-10T10:08:00+08:00</updated><id>http://localhost:4000/document/2019/07/10/leetcode-notes</id><content type="html" xml:base="http://localhost:4000/document/2019/07/10/leetcode-notes.html">&lt;h2 id=&quot;array&quot;&gt;Array&lt;/h2&gt;
 
 &lt;p&gt;In a 2 dimensional array grid, each value grid[i][j] represents 
 the height of a building located there. We are allowed to increase 
@@ -77,6 +77,7 @@ The skyline viewed from left or right is: [8, 7, 9, 3]&lt;/p&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h2 id=&quot;subsets&quot;&gt;Subsets&lt;/h2&gt;
+&lt;h3 id=&quot;78-subsets&quot;&gt;78. Subsets&lt;/h3&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Given a set of distinct integers, S, return all possible subsets.
 Note: Elements in a subset must be in non-descending order. The 
 solution set must not contain duplicate subsets. For example, 
@@ -89,7 +90,9 @@ If S = [1,2,3], a solution is:
 ]
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;h3 id=&quot;解法一-使用递归&quot;&gt;解法一： 使用递归&lt;/h3&gt;</content><author><name></name></author><category term="笔记" /><summary type="html">Array</summary></entry><entry><title type="html">如何使用Jekyll!</title><link href="http://localhost:4000/jekyll/update/2019/06/12/how-to-use-jekyll.html" rel="alternate" type="text/html" title="如何使用Jekyll!" /><published>2019-06-12T09:45:54+08:00</published><updated>2019-06-12T09:45:54+08:00</updated><id>http://localhost:4000/jekyll/update/2019/06/12/how-to-use-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2019/06/12/how-to-use-jekyll.html">&lt;h2 id=&quot;环境&quot;&gt;环境&lt;/h2&gt;
+&lt;h3 id=&quot;解法一-使用递归&quot;&gt;解法一： 使用递归&lt;/h3&gt;
+
+&lt;h3 id=&quot;解法二-使用&quot;&gt;解法二： 使用&lt;/h3&gt;</content><author><name></name></author><category term="笔记" /><summary type="html">Array</summary></entry><entry><title type="html">如何使用Jekyll!</title><link href="http://localhost:4000/jekyll/update/2019/06/12/how-to-use-jekyll.html" rel="alternate" type="text/html" title="如何使用Jekyll!" /><published>2019-06-12T09:45:54+08:00</published><updated>2019-06-12T09:45:54+08:00</updated><id>http://localhost:4000/jekyll/update/2019/06/12/how-to-use-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2019/06/12/how-to-use-jekyll.html">&lt;h2 id=&quot;环境&quot;&gt;环境&lt;/h2&gt;
 &lt;p&gt;首先jekyll需要ruby环境，需要安装&lt;/p&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install bundler jekyll
 jekyll new my-awesome-site
@@ -532,6 +535,12 @@ highlight CursorLine cterm=NONE ctermbg=blue ctermfg=NONE guibg=NONE guifg=NONE&
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;show variables like &quot;binlog_format&quot;;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;h3 id=&quot;切换格式&quot;&gt;切换格式：&lt;/h3&gt;
+&lt;h4 id=&quot;1-在线切换&quot;&gt;1. 在线切换&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;set global binlog_format=ROW; // 必须退出当前session并重连才会生效
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;2-停服切换&quot;&gt;2. 停服切换&lt;/h4&gt;
 
 &lt;p&gt;要切换binlog格式，首先备份my.cnf, 然后修改binlog_format为想要的格式，最后重启mysql&lt;/p&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;my.cnf文件中

@@ -86,6 +86,7 @@ class Solution {
 {% endhighlight %}
 
 ## Subsets
+### 78. Subsets
 ```
 Given a set of distinct integers, S, return all possible subsets.
 Note: Elements in a subset must be in non-descending order. The 
@@ -100,3 +101,5 @@ If S = [1,2,3], a solution is:
 
 ```
 ### 解法一： 使用递归
+
+### 解法二： 使用
